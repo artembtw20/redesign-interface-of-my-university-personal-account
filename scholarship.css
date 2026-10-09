@@ -1,0 +1,352 @@
+/* ============================================================
+   ПОВЫШЕННАЯ СТИПЕНДИЯ — стили scholarship.html
+   ============================================================ */
+
+/* ---------- Шапка ---------- */
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.page-head h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.page-head .subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ---------- Плашка с названием конкурса ---------- */
+.sch-banner {
+  padding: 18px 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ---------- Сетка ---------- */
+.sch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 16px;
+  align-items: start;
+}
+
+/* ============================================================
+   КАРТОЧКА (общая)
+   ============================================================ */
+.sch-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 22px 24px;
+}
+
+.sch-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+.sch-card-head svg {
+  width: 20px; height: 20px;
+  stroke: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   ЛЕВАЯ КОЛОНКА
+   ============================================================ */
+.sch-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Красный блок-предупреждение */
+.sch-warning {
+  display: flex;
+  gap: 14px;
+  padding: 18px 20px;
+  background: #EF4444;
+  border-radius: 12px;
+  color: #fff;
+}
+.sch-warning-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+.sch-warning-icon svg {
+  width: 18px; height: 18px;
+  stroke: #fff;
+}
+.sch-warning-body {
+  flex: 1;
+  min-width: 0;
+}
+.sch-warning-body p {
+  font-size: 13.5px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.sch-warning-body p:last-of-type {
+  margin-bottom: 14px;
+}
+.sch-warning-body b {
+  font-weight: 700;
+}
+
+.sch-btn-primary {
+  display: inline-block;
+  padding: 9px 18px;
+  background: transparent;
+  border: 1.5px solid #fff;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.sch-btn-primary:hover {
+  background: #fff;
+  color: #EF4444;
+}
+
+/* Блок поддержки */
+.sch-support {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  text-align: center;
+  padding: 6px 8px 0;
+}
+.sch-support b {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* Плашка «Конкурс закрыт» */
+.sch-closed {
+  padding: 16px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  text-align: center;
+}
+.sch-closed b {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* ============================================================
+   ПРАВАЯ КОЛОНКА
+   ============================================================ */
+.sch-rating {
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+}
+
+/* Табы */
+.sch-tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+  padding: 0 4px;
+}
+.sch-tab {
+  padding: 12px 2px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.sch-tab:hover { color: var(--text); }
+.sch-tab.active {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+
+/* Таблица */
+.sch-table-wrap {
+  flex: 1;
+  overflow-x: auto;
+  margin-top: 0;
+}
+
+.sch-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.sch-table thead th {
+  background: var(--bg);
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.sch-table tbody td {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+.sch-table tbody tr:last-child td { border-bottom: none; }
+
+.sch-empty {
+  text-align: center !important;
+  color: var(--text-muted) !important;
+  padding: 60px 20px !important;
+  font-size: 14px;
+}
+
+/* ============================================================
+   УВЕДОМЛЕНИЯ
+   ============================================================ */
+.notif-wrap { position: relative; }
+.notif-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  min-width: 320px;
+  max-width: 380px;
+  box-shadow: var(--shadow-hover);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 200;
+  overflow: hidden;
+}
+.notif-dropdown.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.notif-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+.notif-clear {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+}
+.notif-clear:hover { text-decoration: underline; }
+.notif-list { max-height: 360px; overflow-y: auto; }
+.notif-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.notif-item:last-child { border-bottom: none; }
+.notif-item .ico {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: rgba(0, 109, 91, 0.1);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.notif-item .ico svg { width: 16px; height: 16px; stroke: currentColor; }
+.notif-item .body { flex: 1; min-width: 0; }
+.notif-item .title {
+  font-size: 13px; font-weight: 700; color: var(--text);
+  margin-bottom: 2px;
+}
+.notif-item .text {
+  font-size: 12px; color: var(--text-muted); line-height: 1.4;
+}
+.notif-item .time {
+  font-size: 11px; color: var(--text-muted); margin-top: 4px;
+}
+.notif-empty {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.notif-empty svg {
+  width: 32px; height: 32px;
+  margin-bottom: 8px;
+  stroke: currentColor;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   Адаптив
+   ============================================================ */
+@media (max-width: 900px) {
+  .sch-grid { grid-template-columns: 1fr; }
+  .sch-rating { min-height: auto; }
+}
+@media (max-width: 640px) {
+  .page-head { flex-direction: column; align-items: stretch; }
+  .sch-card { padding: 18px; }
+  .sch-warning { flex-direction: column; }
+  .sch-banner { font-size: 14px; padding: 14px 18px; }
+  .sch-table { min-width: 700px; font-size: 12px; }
+  .sch-table thead th,
+  .sch-table tbody td { padding: 10px; }
+  .notif-dropdown { min-width: 280px; right: -40px; }
+}

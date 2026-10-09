@@ -1,0 +1,324 @@
+/* ============================================================
+   ДЕДЛАЙНЫ — стили страницы deadlines.html
+   Подключается ПОСЛЕ styles.css
+   ============================================================ */
+
+/* ---------- Шапка страницы ---------- */
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.page-head h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.page-head .subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ---------- Кнопка "Добавить" ---------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+.btn-primary:active { transform: translateY(0); }
+.btn-primary svg { width: 16px; height: 16px; stroke: currentColor; }
+
+/* ---------- Чипсы со статистикой ---------- */
+.stats-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.chip .chip-num {
+  font-weight: 800;
+  font-size: 14px;
+}
+.chip.danger  { border-color: rgba(239, 68, 68, 0.3);  color: var(--danger);  }
+.chip.warn    { border-color: rgba(245, 158, 11, 0.3); color: var(--warning); }
+.chip.success { border-color: rgba(16, 185, 129, 0.3); color: var(--success); }
+
+/* ---------- Список дедлайнов ---------- */
+.deadlines-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.deadline-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 20px 18px 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+  overflow: hidden;
+}
+.deadline-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Цветная полоса слева */
+.deadline-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--accent);
+}
+.deadline-card.priority-high::before   { background: var(--danger);  }
+.deadline-card.priority-medium::before { background: var(--warning); }
+.deadline-card.priority-low::before    { background: var(--success); }
+.deadline-card.overdue::before         { background: var(--danger); }
+
+.deadline-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.deadline-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.deadline-subject {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.deadline-status {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.deadline-status.status-danger  { color: var(--danger);  background: rgba(239, 68, 68, 0.1); }
+.deadline-status.status-warn    { color: var(--warning); background: rgba(245, 158, 11, 0.1); }
+.deadline-status.status-info    { color: var(--info);    background: rgba(59, 130, 246, 0.1); }
+.deadline-status.status-success { color: var(--success); background: rgba(16, 185, 129, 0.1); }
+
+.deadline-task {
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.deadline-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.deadline-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.deadline-meta svg {
+  width: 13px; height: 13px;
+  stroke: currentColor;
+  opacity: 0.7;
+}
+
+.deadline-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.icon-action {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.icon-action:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.icon-action.danger:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+.icon-action svg { width: 15px; height: 15px; stroke: currentColor; }
+
+/* Пустое состояние */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+}
+.empty-state svg {
+  width: 48px; height: 48px;
+  margin-bottom: 14px;
+  stroke: currentColor;
+  opacity: 0.4;
+}
+.empty-state .title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.empty-state .desc { font-size: 13px; }
+
+/* ---------- Модалка ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  opacity: 0;
+  animation: modalFade 0.2s ease forwards;
+}
+body[data-theme="dark"] .modal-overlay { background: rgba(0, 0, 0, 0.7); }
+@keyframes modalFade { to { opacity: 1; } }
+
+.modal {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px);
+  animation: modalSlide 0.2s ease forwards;
+}
+@keyframes modalSlide { to { transform: translateY(0); } }
+
+.modal h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal .field { margin-bottom: 14px; }
+.modal label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.modal input,
+.modal select {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.modal input:focus,
+.modal select:focus { border-color: var(--accent); }
+.modal input::placeholder { color: var(--text-muted); opacity: 0.6; }
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.modal-btn {
+  flex: 1;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.modal-btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+.modal-btn.primary:hover { background: var(--accent-hover); }
+.modal-btn.ghost {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.modal-btn.ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Адаптив */
+@media (max-width: 640px) {
+  .deadline-card { padding: 16px 16px 16px 20px; }
+  .deadline-actions { flex-direction: row; }
+  .page-head { flex-direction: column; align-items: stretch; }
+  .btn-primary { justify-content: center; }
+}

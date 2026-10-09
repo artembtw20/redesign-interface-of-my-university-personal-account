@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Расписание — АмГУ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="schedule.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="data.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body data-theme="light" data-edu-type="budget">
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a href="https://amursu.ru/" class="logo-wrap" target="_blank" rel="noopener" title="Перейти на сайт АмГУ">
+      <img src="assets/logo-small.svg" alt="АмГУ" class="logo-mini-img">
+      <img src="assets/logo-big.svg" alt="Амурский государственный университет" class="logo-big-img">
+    </a>
+
+    <nav class="nav">
+      <a href="main.html" class="nav-item active"><i data-lucide="home"></i><span class="label">Главная</span></a>
+      <a href="messages.html" class="nav-item"><i data-lucide="mail"></i><span class="label">Сообщения</span></a>
+      <a href="survey.html" class="nav-item"><i data-lucide="clipboard-list"></i><span class="label">Анкетирование</span></a>
+      <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i><span class="label">Портфолио</span></a>
+      <a href="schedule.html" class="nav-item"><i data-lucide="calendar"></i><span class="label">Расписание</span></a>
+      <a href="deadlines.html" class="nav-item"><i data-lucide="alarm-clock"></i><span class="label">Дедлайны</span></a>
+      <a href="#" class="nav-item"><i data-lucide="building-2"></i><span class="label">Образовательные программы</span></a>
+      <a href="#" class="nav-item"><i data-lucide="graduation-cap"></i><span class="label">Учебный процесс</span></a>
+      <a href="#" class="nav-item"><i data-lucide="book-marked"></i><span class="label">Зачётная книжка</span></a>
+      <a href="#" class="nav-item"><i data-lucide="library"></i><span class="label">Библиотека</span></a>
+      <a href="#" class="nav-item"><i data-lucide="gamepad-2"></i><span class="label">Киберспорт</span></a>
+      <a href="#" class="nav-item"><i data-lucide="award"></i><span class="label">Повышенная стипендия</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="container">
+
+      <header class="page-head">
+        <div>
+          <h1 class="page-title">Расписание</h1>
+          <div class="subtitle">2-й семестр · 5106-об · 1-я подгруппа</div>
+        </div>
+        <div class="header-actions">
+          <div class="segmented" id="eduType">
+            <button data-type="budget" class="active">Бюджет</button>
+            <button data-type="paid">Платное</button>
+          </div>
+          <button class="icon-btn" id="themeToggle" title="Сменить тему">
+            <i data-lucide="sun" id="themeIcon"></i>
+          </button>
+          <button class="icon-btn"><i data-lucide="search"></i></button>
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarBtn">А</div>
+            <div class="dropdown" id="dropdown">
+              <a href="#"><i data-lucide="user"></i>Профиль</a>
+              <a href="#"><i data-lucide="settings"></i>Настройки</a>
+              <hr>
+              <a href="#" class="danger"><i data-lucide="log-out"></i>Выход</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="chips">
+        <span class="chip chip-accent"><span class="dot-chip"></span><span id="chipWeek">1-я неделя</span></span>
+      </div>
+
+      <div class="week-nav">
+        <button class="week-nav-btn" id="prevWeek" title="Предыдущая неделя">
+          <i data-lucide="chevron-left"></i>
+        </button>
+        <div class="week-nav-center">
+          <div class="week-nav-range" id="weekRange">—</div>
+          <div class="week-nav-sub" id="weekSub">—</div>
+        </div>
+        <button class="week-nav-btn" id="nextWeek" title="Следующая неделя">
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="schedule-wrap">
+        <div class="schedule-scroll">
+          <table class="schedule-table" id="scheduleTable">
+            <thead>
+              <tr id="scheduleHead"></tr>
+            </thead>
+            <tbody id="scheduleBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="hint">
+        <i data-lucide="info"></i>
+        <span>Расписание доступно только для просмотра</span>
+      </div>
+
+    </div>
+  </main>
+
+<script>
+/* ============================================================
+   РАСПИСАНИЕ — логика страницы (read-only)
+   Данные берутся из data.js: AppData.getSchedule('5106-об')
+   ============================================================ */
+(function() {
+  const GROUP_ID = '5106-об';
+  const SEMESTER_START = new Date(2026, 7, 31);
+
+  const TIME_SLOTS = [
+    '08:15 – 09:45',
+    '09:55 – 11:25',
+    '11:35 – 13:05',
+    '14:00 – 15:30',
+    '15:40 – 17:10',
+    '17:20 – 18:50'
+  ];
+
+  const DAY_KEYS   = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const DAY_SHORT  = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+  const MONTHS_GEN = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+
+  const TYPE_LABEL = {
+    lecture: 'Лекция',
+    practice: 'Практика',
+    lab: 'Лабораторная'
+  };
+
+  let currentMonday = getMonday(new Date());
+
+  function getMonday(date) {
+    const d = new Date(date);
+    d.setHours(0, 0, 0, 0);
+    const day = d.getDay();
+    const diff = (day === 0 ? -6 : 1 - day);
+    d.setDate(d.getDate() + diff);
+    return d;
+  }
+
+  function addDays(date, days) {
+    const d = new Date(date);
+    d.setDate(d.getDate() + days);
+    return d;
+  }
+
+  function formatDay(date) {
+    return `${date.getDate()} ${MONTHS_GEN[date.getMonth()]}`;
+  }
+
+  function formatRange(monday) {
+    const saturday = addDays(monday, 5);
+    return `${monday.getDate()} – ${saturday.getDate()} ${MONTHS_GEN[saturday.getMonth()]} ${saturday.getFullYear()}`;
+  }
+
+  function getWeekNumber(monday) {
+    const startMonday = getMonday(SEMESTER_START);
+    const diff = Math.floor((monday - startMonday) / (7 * 24 * 60 * 60 * 1000));
+    return (diff % 2 === 0) ? 1 : 2;
+  }
+
+  function escapeHTML(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function render() {
+    const weekNum = getWeekNumber(currentMonday);
+    const weekKey = weekNum === 1 ? 'week1' : 'week2';
+    const data = AppData.getSchedule(GROUP_ID);
+    const weekData = data[weekKey];
+
+    document.getElementById('weekRange').textContent = formatRange(currentMonday);
+    document.getElementById('weekSub').textContent = `${weekNum}-я неделя`;
+    document.getElementById('chipWeek').textContent = `${weekNum}-я неделя`;
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const todayStr = today.toDateString();
+
+    let headHTML = `<th>Время</th>`;
+    for (let i = 0; i < DAY_KEYS.length; i++) {
+      const d = addDays(currentMonday, i);
+      const isToday = d.toDateString() === todayStr;
+      headHTML += `
+        <th class="${isToday ? 'today' : ''}">
+          <span class="day-name">${DAY_SHORT[i]}</span>
+          <span class="day-date">${formatDay(d)}</span>
+        </th>
+      `;
+    }
+    document.getElementById('scheduleHead').innerHTML = headHTML;
+
+    let bodyHTML = '';
+    for (let row = 0; row < TIME_SLOTS.length; row++) {
+      bodyHTML += `<tr>`;
+      bodyHTML += `<td class="time-cell">${TIME_SLOTS[row]}</td>`;
+
+      for (let col = 0; col < DAY_KEYS.length; col++) {
+        const day = DAY_KEYS[col];
+        const cellDate = addDays(currentMonday, col);
+        const isTodayCol = cellDate.toDateString() === todayStr;
+        const todayClass = isTodayCol ? ' today-col' : '';
+
+        const lesson = (weekData[day] && weekData[day][row]) || { time: TIME_SLOTS[row], name: '', teacher: '' };
+        const hasLesson = lesson.name && lesson.name.trim();
+
+        if (!hasLesson) {
+          bodyHTML += `<td class="empty-cell${todayClass}"></td>`;
+        } else {
+          const typeBadge = lesson.type && TYPE_LABEL[lesson.type]
+            ? `<span class="badge ${lesson.type}">${TYPE_LABEL[lesson.type]}</span>`
+            : '';
+          bodyHTML += `
+            <td class="lesson-cell${todayClass}">
+              <div class="lesson-name">${escapeHTML(lesson.name)}</div>
+              ${lesson.teacher ? `<div class="lesson-meta">${escapeHTML(lesson.teacher)}${lesson.room ? ' · ауд. ' + escapeHTML(lesson.room) : ''}</div>` : ''}
+              ${typeBadge}
+            </td>
+          `;
+        }
+      }
+      bodyHTML += `</tr>`;
+    }
+    document.getElementById('scheduleBody').innerHTML = bodyHTML;
+
+    if (window.lucide) lucide.createIcons();
+  }
+
+  document.getElementById('prevWeek').addEventListener('click', () => {
+    currentMonday = addDays(currentMonday, -7);
+    render();
+  });
+  document.getElementById('nextWeek').addEventListener('click', () => {
+    currentMonday = addDays(currentMonday, 7);
+    render();
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    render();
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+/* ============================================================
+   ЗАЧЁТНАЯ КНИЖКА — стили record-book.html
+   ============================================================ */
+
+/* ---------- Шапка ---------- */
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.page-head h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.page-head .subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.hidden { display: none !important; }
+
+/* ============================================================
+   ШАПКА ЗАЧЁТКИ
+   ============================================================ */
+.rb-header {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 24px 28px;
+}
+.rb-header-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  text-align: center;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.rb-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.rb-student {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.rb-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #EC4899, #DB2777);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  border-radius: 6px;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+}
+.rb-student-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.rb-group {
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+.rb-student-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.rb-stats {
+  display: flex;
+  gap: 12px;
+}
+.rb-stat {
+  padding: 12px 18px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  min-width: 130px;
+}
+.rb-stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.rb-stat-value {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--success);
+}
+.rb-stat-link {
+  font-size: 13px;
+  color: #2563EB;
+  font-weight: 600;
+  cursor: pointer;
+}
+body[data-theme="dark"] .rb-stat-link { color: #60A5FA; }
+.rb-stat-link:hover { text-decoration: underline; }
+
+/* ============================================================
+   ВКЛАДКИ ВНУТРИ КНИЖКИ
+   ============================================================ */
+.rb-tabs {
+  display: flex;
+  gap: 28px;
+  border-bottom: 1px solid var(--border);
+  padding: 0 4px;
+  margin-top: 8px;
+  overflow-x: auto;
+}
+.rb-tabs::-webkit-scrollbar { height: 0; }
+.rb-tab {
+  padding: 14px 2px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.rb-tab:hover { color: var(--text); }
+.rb-tab.active {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+
+/* ============================================================
+   ПОДВКЛАДКИ (семестры)
+   ============================================================ */
+.rb-subtabs {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+.rb-subtab {
+  padding: 10px 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.rb-subtab:hover { color: var(--text); }
+.rb-subtab.active {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+
+/* ============================================================
+   ЗАГОЛОВКИ СЕКЦИЙ (Экзамены / Зачёты)
+   ============================================================ */
+.rb-section-head {
+  display: inline-block;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 22px 0 12px;
+}
+.rb-section-head.exams { background: #DC2626; }
+.rb-section-head.zachets { background: #2563EB; }
+.rb-section-head:first-child { margin-top: 0; }
+
+/* ============================================================
+   ТАБЛИЦЫ
+   ============================================================ */
+.rb-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.rb-table thead th {
+  background: var(--bg);
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.rb-table tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.rb-table tbody tr:last-child td { border-bottom: none; }
+.rb-table tbody tr:hover { background: var(--bg); }
+
+.rb-empty {
+  text-align: center !important;
+  color: var(--text-muted) !important;
+  padding: 24px !important;
+  font-style: italic;
+}
+
+/* ============================================================
+   ПУБЛИЧНАЯ ЗАЧЁТНАЯ КНИЖКА
+   ============================================================ */
+.rb-public {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 20px 24px;
+  margin-top: 20px;
+}
+.rb-public-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.rb-public-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Switch */
+.rb-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+  cursor: pointer;
+}
+.rb-switch input { display: none; }
+.rb-switch-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--border);
+  border-radius: 26px;
+  transition: background 0.2s;
+}
+.rb-switch-slider::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.rb-switch input:checked + .rb-switch-slider {
+  background: var(--accent);
+}
+.rb-switch input:checked + .rb-switch-slider::before {
+  transform: translateX(20px);
+}
+
+.rb-public-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.rb-public-badge svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+}
+.rb-public-badge.open {
+  background: rgba(16, 185, 129, 0.1);
+  color: #047857;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+body[data-theme="dark"] .rb-public-badge.open {
+  color: #6EE7B7;
+}
+
+.rb-public-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   УВЕДОМЛЕНИЯ
+   ============================================================ */
+.notif-wrap { position: relative; }
+.notif-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  min-width: 320px;
+  max-width: 380px;
+  box-shadow: var(--shadow-hover);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 200;
+  overflow: hidden;
+}
+.notif-dropdown.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.notif-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+.notif-clear {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+}
+.notif-clear:hover { text-decoration: underline; }
+.notif-list { max-height: 360px; overflow-y: auto; }
+.notif-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.notif-item:last-child { border-bottom: none; }
+.notif-item .ico {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: rgba(0, 109, 91, 0.1);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.notif-item .ico svg { width: 16px; height: 16px; stroke: currentColor; }
+.notif-item .body { flex: 1; min-width: 0; }
+.notif-item .title {
+  font-size: 13px; font-weight: 700; color: var(--text);
+  margin-bottom: 2px;
+}
+.notif-item .text {
+  font-size: 12px; color: var(--text-muted); line-height: 1.4;
+}
+.notif-item .time {
+  font-size: 11px; color: var(--text-muted); margin-top: 4px;
+}
+.notif-empty {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.notif-empty svg {
+  width: 32px; height: 32px;
+  margin-bottom: 8px;
+  stroke: currentColor;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   Адаптив
+   ============================================================ */
+@media (max-width: 900px) {
+  .rb-table { font-size: 12px; min-width: 700px; }
+  .rb-table thead th,
+  .rb-table tbody td { padding: 10px 12px; }
+}
+@media (max-width: 640px) {
+  .page-head { flex-direction: column; align-items: stretch; }
+  .rb-header { padding: 18px; }
+  .rb-avatar { width: 60px; height: 60px; font-size: 22px; }
+  .rb-student-name { font-size: 14px; }
+  .rb-stats { flex-direction: column; width: 100%; }
+  .rb-stat { width: 100%; }
+  .rb-tabs { gap: 18px; }
+  .rb-tab { font-size: 13px; }
+  .notif-dropdown { min-width: 280px; right: -40px; }
+}
+
+/* ---------- Бейджи оценок ---------- */
+.rb-grade {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+.rb-grade.grade-otlichno   { color: #047857; background: rgba(16, 185, 129, 0.1);  border-color: rgba(16, 185, 129, 0.3); }
+.rb-grade.grade-khorosho   { color: #B45309; background: rgba(245, 158, 11, 0.1);  border-color: rgba(245, 158, 11, 0.3); }
+.rb-grade.grade-udovlet    { color: #1D4ED8; background: rgba(59, 130, 246, 0.1);  border-color: rgba(59, 130, 246, 0.3); }
+.rb-grade.grade-zachet     { color: #047857; background: rgba(16, 185, 129, 0.1);  border-color: rgba(16, 185, 129, 0.3); }
+.rb-grade.grade-nezachet   { color: #B91C1C; background: rgba(239, 68, 68, 0.1);   border-color: rgba(239, 68, 68, 0.3); }
+
+body[data-theme="dark"] .rb-grade.grade-otlichno { color: #6EE7B7; }
+body[data-theme="dark"] .rb-grade.grade-khorosho { color: #FCD34D; }
+body[data-theme="dark"] .rb-grade.grade-udovlet  { color: #93C5FD; }
+body[data-theme="dark"] .rb-grade.grade-zachet   { color: #6EE7B7; }
+body[data-theme="dark"] .rb-grade.grade-nezachet { color: #FCA5A5; }
+
+/* ============================================================
+   ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ ДЛЯ ШИРОКИХ ТАБЛИЦ
+   ============================================================ */
+.rb-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.rb-table-scroll .rb-table {
+  border: none;
+  border-radius: 0;
+  min-width: 1200px; /* чтобы 10 колонок практики не сжимались */
+  margin-bottom: 0;
+}
+.rb-pane > .rb-table {
+  min-width: 100%;
+}

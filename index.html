@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>АмГУ — Вход</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="data.js"></script>
+</head>
+<body>
+
+  <main class="login-page">
+    <header class="login-head">
+      <div class="login-logo">
+        <img src="assets/logo-big.svg" alt="АмГУ">
+      </div>
+      <h1>Личный кабинет</h1>
+      <p class="login-sub">Выберите роль, чтобы войти в демо-режиме</p>
+    </header>
+
+    <div class="role-grid">
+
+      <button class="role-card" data-role="student" data-id="bekker">
+        <div class="role-icon role-student">
+          <i data-lucide="graduation-cap"></i>
+        </div>
+        <div class="role-title">Студент</div>
+        <div class="role-name">Беккер Артём</div>
+        <div class="role-desc">Дашборд, расписание, дедлайны</div>
+      </button>
+
+      <button class="role-card" data-role="teacher" data-id="golubeva">
+        <div class="role-icon role-teacher">
+          <i data-lucide="user-check"></i>
+        </div>
+        <div class="role-title">Преподаватель</div>
+        <div class="role-name">Голубева И.А.</div>
+        <div class="role-desc">Физика · группы 5106, 5107</div>
+      </button>
+
+      <button class="role-card" data-role="teacher" data-id="samarin">
+        <div class="role-icon role-teacher">
+          <i data-lucide="user-check"></i>
+        </div>
+        <div class="role-title">Преподаватель</div>
+        <div class="role-name">Самарин А.Д.</div>
+        <div class="role-desc">ТМП · группы 5106, 5108</div>
+      </button>
+
+      <button class="role-card" data-role="teacher" data-id="khvorostyanoy">
+        <div class="role-icon role-teacher">
+          <i data-lucide="user-check"></i>
+        </div>
+        <div class="role-title">Преподаватель</div>
+        <div class="role-name">Хворостяной А.А.</div>
+        <div class="role-desc">Философия · все группы</div>
+      </button>
+
+      <button class="role-card role-admin" data-role="admin">
+        <div class="role-icon role-admin-icon">
+          <i data-lucide="shield"></i>
+        </div>
+        <div class="role-title">Администратор</div>
+        <div class="role-name">Учебный отдел</div>
+        <div class="role-desc">Расписание и типы пар</div>
+      </button>
+
+    </div>
+  </main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.lucide) lucide.createIcons();
+
+    document.querySelectorAll('.role-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const role = card.dataset.role;
+        const id = card.dataset.id || null;
+        AppData.setCurrentUser({ role, id });
+        if (role === 'student') location.href = 'main.html';
+        else if (role === 'teacher') location.href = 'teacher.html';
+        else if (role === 'admin') location.href = 'admin.html';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

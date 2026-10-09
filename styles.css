@@ -1,0 +1,666 @@
+/* ============================================================
+   АмГУ — Личный кабинет
+   Общие стили для всех страниц
+   ============================================================ */
+
+/* ---------- CSS-переменные: светлая тема ---------- */
+:root {
+  --bg: #F5F7FA;
+  --card: #FFFFFF;
+  --border: #E2E8F0;
+  --text: #0F172A;
+  --text-muted: #64748B;
+  --primary: #002C4A;
+  --accent: #006D5B;
+  --accent-hover: #005544;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #3B82F6;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-hover: 0 8px 24px rgba(0,44,74,0.08);
+  --sidebar-w: 72px;
+  --sidebar-w-expanded: 280px;
+  --container-max: 1280px;
+}
+
+/* ---------- Тёмная тема ---------- */
+body[data-theme="dark"] {
+  --bg: #0A1620;
+  --card: #13212E;
+  --border: #1E2F3E;
+  --text: #F1F5F9;
+  --text-muted: #94A3B8;
+  --primary: #061B2A;
+  --accent: #00A88A;
+  --accent-hover: #00C4A0;
+  --success: #34D399;
+  --warning: #FBBF24;
+  --danger: #F87171;
+  --info: #60A5FA;
+  --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-hover: 0 8px 24px rgba(0,168,138,0.15);
+}
+
+/* ---------- База ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Exo 2', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+a { color: inherit; }
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 12px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  overflow: hidden;
+}
+.sidebar.expanded { width: var(--sidebar-w-expanded); }
+
+/* ============================================================
+   ЛОГО + мягкая подложка
+   ============================================================ */
+.logo-wrap {
+  position: relative;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  padding: 6px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo-wrap:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #fff;
+}
+
+body[data-theme="dark"] .logo-wrap {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.logo-mini-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.logo-big-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 40px;
+  width: auto;
+  max-width: calc(100% - 16px);
+  object-fit: contain;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s 0.05s;
+}
+
+.sidebar.expanded .logo-mini-img { opacity: 0; }
+.sidebar.expanded .logo-big-img { opacity: 1; pointer-events: auto; }
+
+/* ============================================================
+   Навигация
+   ============================================================ */
+.nav {
+  margin-top: 28px;
+  display: flex; flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  overflow-y: auto;
+}
+.nav::-webkit-scrollbar { width: 0; }
+
+.nav-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.nav-item.active { background: var(--accent); color: #fff; }
+.nav-item svg {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  color: inherit;
+  stroke: currentColor;
+}
+.nav-item .label {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.sidebar.expanded .nav-item .label { opacity: 1; }
+
+/* ============================================================
+   OVERLAY
+   ============================================================ */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 90;
+}
+body[data-theme="dark"] .overlay { background: rgba(0,0,0,0.6); }
+.overlay.active { opacity: 1; pointer-events: auto; }
+
+/* ============================================================
+   MAIN / CONTAINER
+   ============================================================ */
+main {
+  margin-left: var(--sidebar-w);
+  padding: 24px 32px 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+  gap: 16px;
+}
+header h1 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+header .date { color: var(--text-muted); font-size: 14px; margin-top: 2px; }
+
+.header-actions { display: flex; align-items: center; gap: 10px; }
+
+.icon-btn {
+  width: 40px; height: 40px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--text);
+  transition: all 0.15s;
+  position: relative;
+}
+.icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+.icon-btn svg { width: 18px; height: 18px; stroke: currentColor; }
+.icon-btn .dot {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 8px; height: 8px;
+  background: var(--danger);
+  border-radius: 50%;
+  border: 2px solid var(--card);
+}
+
+/* Сегментированный переключатель */
+.segmented {
+  display: flex;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+}
+.segmented button {
+  padding: 7px 14px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.segmented button.active {
+  background: var(--accent);
+  color: #fff;
+}
+.segmented button:not(.active):hover { color: var(--text); }
+
+/* Аватар + dropdown */
+.avatar-wrap { position: relative; }
+.avatar {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.avatar:hover { transform: scale(1.05); }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  min-width: 200px;
+  box-shadow: var(--shadow-hover);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 200;
+}
+.dropdown.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.dropdown a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.dropdown a:hover { background: var(--bg); }
+.dropdown a svg { width: 16px; height: 16px; stroke: currentColor; opacity: 0.7; }
+.dropdown hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 6px 4px;
+}
+.dropdown a.danger { color: var(--danger); }
+
+/* ============================================================
+   METRICS
+   ============================================================ */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  flex-shrink: 0;
+}
+.metric {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.metric:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.metric .label { color: var(--text-muted); font-size: 13px; margin-bottom: 8px; }
+.metric .value { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+.metric .value span { font-size: 16px; color: var(--text-muted); font-weight: 500; }
+.metric .trend { font-size: 12px; margin-top: 4px; color: var(--success); }
+.metric .trend.warn { color: var(--warning); }
+.metric .trend.danger { color: var(--danger); }
+
+.progress {
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.progress > div {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+/* ============================================================
+   CARDS / GRID
+   ============================================================ */
+.grid-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.grid-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  flex: 1;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+.card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+.card-head h2 { font-size: 16px; font-weight: 700; }
+.card-head a {
+  color: var(--accent);
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SCHEDULE (уроки)
+   ============================================================ */
+.lesson {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--bg);
+  margin-bottom: 8px;
+}
+.lesson:last-child { margin-bottom: 0; }
+.lesson .time { font-weight: 700; font-size: 15px; min-width: 52px; }
+.lesson .time small {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.lesson .bar { width: 4px; height: 40px; border-radius: 2px; flex-shrink: 0; }
+.lesson .info { flex: 1; min-width: 0; }
+.lesson .info .name {
+  font-weight: 600;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lesson .info .meta {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.badge {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.badge.lecture  { background: #DBEAFE; color: #1D4ED8; }
+.badge.practice { background: #D1FAE5; color: #047857; }
+.badge.lab      { background: #FEE2E2; color: #B91C1C; }
+
+body[data-theme="dark"] .badge.lecture  { background: rgba(96,165,250,0.15);  color: #93C5FD; }
+body[data-theme="dark"] .badge.practice { background: rgba(52,211,153,0.15);  color: #6EE7B7; }
+body[data-theme="dark"] .badge.lab      { background: rgba(248,113,113,0.15); color: #FCA5A5; }
+
+/* ============================================================
+   DEADLINES
+   ============================================================ */
+.deadline {
+  display: flex; gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.deadline:last-child { border-bottom: none; padding-bottom: 0; }
+.deadline .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+.deadline .dot.danger { background: var(--danger); }
+.deadline .dot.warn { background: var(--warning); }
+.deadline .dot.ok { background: var(--success); }
+.deadline .title { font-weight: 600; font-size: 14px; }
+.deadline .sub { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+.deadline .date { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+.count-badge {
+  background: var(--danger);
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 6px;
+  font-weight: 700;
+}
+
+/* ============================================================
+   EMPTY / QUICK ACCESS
+   ============================================================ */
+.empty {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  flex: 1;
+}
+.empty svg { width: 32px; height: 32px; margin-bottom: 8px; opacity: 0.5; stroke: currentColor; }
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.quick-item {
+  display: flex; flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  background: var(--bg);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s, transform 0.15s;
+}
+.quick-item:hover {
+  background: var(--border);
+  transform: translateY(-2px);
+}
+.quick-item svg {
+  width: 22px; height: 22px;
+  color: var(--accent);
+  stroke: currentColor;
+}
+
+/* ============================================================
+   ADAPTIVE
+   ============================================================ */
+@media (max-width: 1200px) {
+  .container { max-width: 100%; }
+  .metrics { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  main {
+    margin-left: var(--sidebar-w);
+    padding: 20px;
+  }
+  .grid-main { grid-template-columns: 1fr; }
+  .grid-bottom { grid-template-columns: 1fr; }
+  .segmented button { padding: 6px 10px; font-size: 12px; }
+}
+
+@media (max-width: 640px) {
+  /* ---- Сайдбар: уже и с другим поведением ---- */
+  :root { --sidebar-w: 60px; --sidebar-w-expanded: 240px; }
+
+  .sidebar { padding: 12px 8px; }
+  .logo-wrap { height: 44px; padding: 5px; }
+  .logo-mini-img { width: 32px; height: 32px; }
+  .logo-big-img { height: 30px; }
+  .nav { margin-top: 20px; }
+  .nav-item { padding: 9px 10px; gap: 12px; font-size: 13px; }
+  .nav-item svg { width: 18px; height: 18px; }
+
+  /* ---- Main / container ---- */
+  main { padding: 14px 14px 32px; }
+  .container { gap: 16px; }
+
+  /* ---- Header ---- */
+  header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  header h1 { font-size: 20px; }
+  header .date { font-size: 12px; }
+
+  .header-actions {
+    gap: 6px;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .icon-btn { width: 36px; height: 36px; }
+  .icon-btn svg { width: 16px; height: 16px; }
+  .avatar { width: 36px; height: 36px; font-size: 14px; }
+
+  /* Segmented — на всю ширину */
+  .segmented {
+    order: 10;
+    width: 100%;
+    padding: 2px;
+  }
+  .segmented button {
+    flex: 1;
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  /* ---- Метрики: 2 в ряд ---- */
+  .metrics { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .metric { padding: 14px; border-radius: 12px; }
+  .metric .label { font-size: 11px; margin-bottom: 4px; }
+  .metric .value { font-size: 22px; }
+  .metric .value span { font-size: 13px; }
+  .metric .trend { font-size: 11px; }
+
+  /* ---- Карточки ---- */
+  .card { padding: 16px; border-radius: 12px; }
+  .card-head { margin-bottom: 12px; }
+  .card-head h2 { font-size: 14px; }
+  .card-head a { font-size: 12px; }
+
+  /* ---- Уроки (расписание на главной) ---- */
+  .lesson {
+    padding: 12px 10px;
+    gap: 10px;
+    border-radius: 10px;
+  }
+  .lesson .time { min-width: 44px; font-size: 13px; }
+  .lesson .time small { font-size: 10px; }
+  .lesson .bar { height: 34px; }
+  .lesson .info .name { font-size: 13px; }
+  .lesson .info .meta { font-size: 11px; }
+  .badge { font-size: 10px; padding: 3px 8px; }
+
+  /* ---- Дедлайны ---- */
+  .deadline { padding: 10px 0; gap: 10px; }
+  .deadline .title { font-size: 13px; }
+  .deadline .sub { font-size: 11px; }
+  .deadline .date { font-size: 11px; }
+  .count-badge { font-size: 10px; padding: 2px 6px; }
+
+  /* ---- Empty ---- */
+  .empty { padding: 16px; font-size: 12px; }
+  .empty svg { width: 26px; height: 26px; }
+
+  /* ---- Quick grid ---- */
+  .quick-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .quick-item { padding: 12px 8px; font-size: 12px; }
+  .quick-item svg { width: 18px; height: 18px; }
+
+  /* ---- Dropdown ---- */
+  .dropdown { min-width: 200px; right: -6px; }
+  .dropdown a { padding: 9px 12px; font-size: 13px; }
+
+  /* ---- Modals ---- */
+  .modal {
+    padding: 20px;
+    border-radius: 14px;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+  .modal h3 { font-size: 16px; margin-bottom: 16px; }
+  .modal .field { margin-bottom: 12px; }
+  .modal input,
+  .modal select,
+  .modal textarea { font-size: 14px; padding: 10px 12px; }
+  .modal-btn { padding: 10px 14px; font-size: 13px; }
+
+  /* ---- Уведомления: не вылезают за экран ---- */
+  .notif-dropdown {
+    min-width: 0;
+    width: calc(100vw - 28px);
+    right: -50px;
+    max-width: 340px;
+  }
+}
+
+/* ---- Очень маленькие экраны ---- */
+@media (max-width: 380px) {
+  .metrics { grid-template-columns: 1fr; }
+  header h1 { font-size: 18px; }
+  .quick-grid { grid-template-columns: 1fr; }
+}
+
+
+  /* ============================================================
+   METRIC как ссылка
+   ============================================================ */
+.metric-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.metric-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}

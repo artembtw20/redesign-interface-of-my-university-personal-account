@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Учебный процесс — АмГУ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="process.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="data.js"></script>
+<script defer src="app.js"></script>
+<script defer src="process.js"></script>
+</head>
+<body data-theme="light" data-edu-type="budget">
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a href="https://amursu.ru/" class="logo-wrap" target="_blank" rel="noopener" title="Перейти на сайт АмГУ">
+      <img src="assets/logo-small.svg" alt="АмГУ" class="logo-mini-img">
+      <img src="assets/logo-big.svg" alt="Амурский государственный университет" class="logo-big-img">
+    </a>
+
+    <nav class="nav">
+      <a href="main.html" class="nav-item active"><i data-lucide="home"></i><span class="label">Главная</span></a>
+      <a href="messages.html" class="nav-item"><i data-lucide="mail"></i><span class="label">Сообщения</span></a>
+      <a href="survey.html" class="nav-item"><i data-lucide="clipboard-list"></i><span class="label">Анкетирование</span></a>
+      <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i><span class="label">Портфолио</span></a>
+      <a href="schedule.html" class="nav-item"><i data-lucide="calendar"></i><span class="label">Расписание</span></a>
+      <a href="deadlines.html" class="nav-item"><i data-lucide="alarm-clock"></i><span class="label">Дедлайны</span></a>
+      <a href="programs.html" class="nav-item"><i data-lucide="building-2"></i><span class="label">Образовательные программы</span></a>
+      <a href="process.html" class="nav-item"><i data-lucide="graduation-cap"></i><span class="label">Учебный процесс</span></a>
+      <a href="record-book.html" class="nav-item"><i data-lucide="book-marked"></i><span class="label">Зачётная книжка</span></a>
+      <a href="library.html" class="nav-item"><i data-lucide="library"></i><span class="label">Библиотека</span></a>
+      <a href="cybersport.html" class="nav-item"><i data-lucide="gamepad-2"></i><span class="label">Киберспорт</span></a>
+      <a href="scholarship.html" class="nav-item"><i data-lucide="award"></i><span class="label">Повышенная стипендия</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="container">
+
+      <header class="page-head">
+        <div>
+          <h1 id="pageTitle">Учебный процесс</h1>
+          <div class="subtitle" id="pageSubtitle">Электронное обучение, аттестация, задания</div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="themeToggle" title="Сменить тему">
+            <i data-lucide="sun" id="themeIcon"></i>
+          </button>
+
+          <div class="notif-wrap">
+            <button class="icon-btn" id="notifBtn" title="Уведомления">
+              <i data-lucide="bell"></i>
+              <span class="dot" id="notifDot" style="display: none;"></span>
+            </button>
+            <div class="notif-dropdown" id="notifDropdown">
+              <div class="notif-head">
+                <span>Уведомления</span>
+                <button class="notif-clear" id="notifClear">Очистить</button>
+              </div>
+              <div class="notif-list" id="notifList"></div>
+            </div>
+          </div>
+
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarBtn">А</div>
+            <div class="dropdown" id="dropdown">
+              <a href="profile.html"><i data-lucide="user"></i>Профиль</a>
+              <a href="#"><i data-lucide="settings"></i>Настройки</a>
+              <hr>
+              <a href="#" class="danger"><i data-lucide="log-out"></i>Выход</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 1: МЕНЮ ПОДРАЗДЕЛОВ                    -->
+      <!-- ============================================ -->
+      <section class="view" id="view-menu">
+        <div class="menu-list">
+          <a href="#" class="menu-item" data-view="elearning">
+            <div class="menu-item-left">
+              <i data-lucide="monitor-play"></i>
+              <span>Электронное обучение</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+
+          <a href="#" class="menu-item" data-view="attestation">
+            <div class="menu-item-left">
+              <i data-lucide="file-check-2"></i>
+              <span>Результаты промежуточной аттестации и результаты освоения программы</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+
+          <a href="#" class="menu-item" data-view="current">
+            <div class="menu-item-left">
+              <i data-lucide="chart-line"></i>
+              <span>Текущая успеваемость/посещаемость</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+
+          <a href="#" class="menu-item" data-view="tasks">
+            <div class="menu-item-left">
+              <i data-lucide="clipboard-edit"></i>
+              <span>Индивидуальные задания</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+
+          <a href="#" class="menu-item" data-view="group">
+            <div class="menu-item-left">
+              <i data-lucide="users"></i>
+              <span>Ваша группа</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+
+          <a href="record-book.html" class="menu-item">
+            <div class="menu-item-left">
+              <i data-lucide="book-marked"></i>
+              <span>Электронная зачётная книжка</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+
+          <a href="student-card.html" class="menu-item">
+            <div class="menu-item-left">
+              <i data-lucide="credit-card"></i>
+              <span>Студенческий билет</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+
+          <a href="#" class="menu-item" data-view="stub" data-stub="Антиплагиат (справка)">
+            <div class="menu-item-left">
+              <i data-lucide="file-search"></i>
+              <span>Антиплагиат (справка)</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+
+          <a href="#" class="menu-item" data-view="stub" data-stub="Антиплагиат (прямая ссылка)">
+            <div class="menu-item-left">
+              <i data-lucide="external-link"></i>
+              <span>Антиплагиат (прямая ссылка)</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+
+          <a href="#" class="menu-item" data-view="stub" data-stub="Белая книга">
+            <div class="menu-item-left">
+              <i data-lucide="book"></i>
+              <span>Белая книга</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 2: ЭЛЕКТРОННОЕ ОБУЧЕНИЕ                -->
+      <!-- ============================================ -->
+      <section class="view hidden" id="view-elearning">
+        <div class="view-toolbar">
+          <button class="btn-back" data-back="menu">
+            <i data-lucide="chevron-left"></i> Назад
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Учётная запись для СДО Moodle</div>
+          <div class="info-row">
+            <span class="k">Ваш логин</span>
+            <span class="v">id0056809</span>
+          </div>
+          <div class="info-row">
+            <span class="k">Пароль</span>
+            <span class="v">тот, с которым Вы вошли в личный кабинет</span>
+          </div>
+          <div class="info-note">
+            <i data-lucide="info"></i>
+            <span>Для входа в СДО перейдите по ссылке <a href="#" class="link" data-stub-link="https://newmoodle.amursu.ru/">https://newmoodle.amursu.ru/</a></span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Установи мобильное приложение Moodle на своё устройство</div>
+          <div class="apps-row">
+            <button class="app-btn" data-stub-link="Google Play">
+              <i data-lucide="play"></i>
+              <span>Google Play</span>
+            </button>
+            <button class="app-btn" data-stub-link="App Store">
+              <i data-lucide="apple"></i>
+              <span>App Store</span>
+            </button>
+          </div>
+          <div class="info-note">
+            <i data-lucide="book-open"></i>
+            <span>Инструкция по работе с мобильным приложением доступна в разделе «Инструкции» ниже</span>
+          </div>
+        </div>
+
+        <div class="two-cols">
+          <div class="card">
+            <div class="card-title">Линия поддержки</div>
+            <div class="empty-small">Обращения принимаются через СДО</div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Инструкции</div>
+            <ul class="instr-list">
+              <li><span class="doc-link" data-stub-link="Инструкция по входу в СДО Moodle">Инструкция по входу в СДО Moodle</span></li>
+              <li><span class="doc-link" data-stub-link="Инструкция по работе с мобильным приложением Moodle">Инструкция по работе с мобильным приложением Moodle</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Ваши курсы</div>
+          <table class="simple-table">
+            <thead>
+              <tr>
+                <th>Название курса</th>
+                <th style="width: 200px;">Ссылка на курс</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Философия. Дистанционное обучение</td>
+                <td><span class="doc-link" data-stub-link="Курс в Moodle">ССЫЛКА</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 3: ПРОМЕЖУТОЧНАЯ АТТЕСТАЦИЯ            -->
+      <!-- ============================================ -->
+      <section class="view hidden" id="view-attestation">
+        <div class="view-toolbar">
+          <button class="btn-back" data-back="menu">
+            <i data-lucide="chevron-left"></i> Назад
+          </button>
+        </div>
+
+        <div class="att-head">
+          Успеваемость: Бакалавриат: 10.03.01 Информационная безопасность 2026-2027 (Очная)
+        </div>
+
+        <div class="semester-label">Третий семестр</div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Дисциплина</th>
+                <th style="width: 90px;">Часы</th>
+                <th style="width: 180px;">Вид контроля</th>
+                <th style="width: 120px;">Оценка</th>
+                <th>Компетенции</th>
+                <th style="width: 120px;">Уровень освоения</th>
+              </tr>
+            </thead>
+            <tbody id="attestationBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 4: ТЕКУЩАЯ УСПЕВАЕМОСТЬ                -->
+      <!-- ============================================ -->
+      <section class="view hidden" id="view-current">
+        <div class="view-toolbar">
+          <button class="btn-back" data-back="menu">
+            <i data-lucide="chevron-left"></i> Назад
+          </button>
+        </div>
+
+        <div class="att-head">5106-об (Третий семестр)</div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Дисциплина</th>
+                <th style="width: 180px;">Оценки</th>
+                <th style="width: 90px;">Сумма</th>
+                <th style="width: 200px;">Итоговая оценка за семестр</th>
+              </tr>
+            </thead>
+            <tbody id="currentBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 5: ИНДИВИДУАЛЬНЫЕ ЗАДАНИЯ              -->
+      <!-- ============================================ -->
+      <section class="view hidden" id="view-tasks">
+        <div class="view-toolbar">
+          <button class="btn-back" data-back="menu">
+            <i data-lucide="chevron-left"></i> Назад
+          </button>
+        </div>
+
+        <div class="att-head">5106-об (Третий семестр)</div>
+
+        <div class="tasks-list" id="tasksList"></div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 6: ВАША ГРУППА                         -->
+      <!-- ============================================ -->
+      <section class="view hidden" id="view-group">
+        <div class="view-toolbar">
+          <button class="btn-back" data-back="menu">
+            <i data-lucide="chevron-left"></i> Назад
+          </button>
+        </div>
+
+        <div class="att-head">5106-об</div>
+
+        <div class="group-list" id="groupList"></div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

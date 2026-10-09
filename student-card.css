@@ -1,0 +1,488 @@
+/* ============================================================
+   СТУДЕНЧЕСКИЙ БИЛЕТ — стили student-card.html
+   ============================================================ */
+
+/* ---------- Шапка ---------- */
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.page-head h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.page-head .subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   ВИРТУАЛЬНАЯ КАРТА
+   ============================================================ */
+.sc-card {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.sc-card-inner {
+  position: relative;
+  border-radius: 22px;
+  padding: 26px 28px;
+  background: linear-gradient(135deg, #006D5B 0%, #002C4A 100%);
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 44, 74, 0.35);
+  aspect-ratio: 1.586 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sc-card-decor {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.08;
+}
+.sc-card-decor-1 {
+  width: 320px;
+  height: 320px;
+  top: -120px;
+  right: -120px;
+  background: #fff;
+}
+.sc-card-decor-2 {
+  width: 200px;
+  height: 200px;
+  bottom: -100px;
+  left: -60px;
+  background: #fff;
+}
+
+.sc-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+.sc-card-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sc-card-logo img {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px;
+  object-fit: contain;
+}
+.sc-card-logo-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  opacity: 0.9;
+}
+.sc-card-type {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  text-align: right;
+}
+
+.sc-card-body {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+  margin: 8px 0;
+}
+.sc-photo {
+  width: 84px;
+  height: 100px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px;
+  flex-shrink: 0;
+}
+.sc-photo-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #EC4899, #DB2777);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.sc-info { min-width: 0; }
+.sc-name {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.sc-group {
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0.9;
+  margin-bottom: 4px;
+}
+.sc-faculty {
+  font-size: 11px;
+  line-height: 1.35;
+  opacity: 0.7;
+}
+
+.sc-card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+.sc-number-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 2px;
+}
+.sc-number {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 6px;
+}
+.sc-issued {
+  font-size: 10px;
+  opacity: 0.65;
+}
+
+/* ============================================================
+   СТАТУС + КНОПКИ
+   ============================================================ */
+.sc-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 16px 22px;
+}
+
+.sc-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sc-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+}
+body[data-theme="dark"] .sc-status-badge {
+  color: #6EE7B7;
+  background: rgba(16, 185, 129, 0.15);
+}
+.sc-status-badge svg { width: 15px; height: 15px; stroke: currentColor; }
+
+.sc-status-badge.warning {
+  background: rgba(245, 158, 11, 0.12);
+  color: #B45309;
+}
+body[data-theme="dark"] .sc-status-badge.warning {
+  color: #FCD34D;
+  background: rgba(245, 158, 11, 0.15);
+}
+.sc-status-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.sc-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.sc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.sc-btn svg { width: 15px; height: 15px; stroke: currentColor; }
+
+.sc-btn-ghost {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.sc-btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ============================================================
+   ДАННЫЕ ДОКУМЕНТА — ШИРОКАЯ КАРТОЧКА
+   ============================================================ */
+.sc-data-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 26px 30px;
+}
+
+.sc-info-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.sc-info-head svg {
+  width: 16px; height: 16px;
+  stroke: var(--accent);
+}
+
+.sc-data-rows {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+}
+
+.sc-data-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 14px;
+}
+.sc-data-row .k {
+  color: var(--text-muted);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.sc-data-row .v {
+  color: var(--text);
+  font-weight: 600;
+  text-align: right;
+  word-break: break-word;
+}
+
+.sc-status-active-text {
+  color: var(--success) !important;
+}
+
+/* Убираем нижнюю границу у последних двух строк (второй столбец) */
+.sc-data-rows .sc-data-row:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+/* ============================================================
+   УВЕДОМЛЕНИЯ
+   ============================================================ */
+.notif-wrap { position: relative; }
+.notif-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  min-width: 320px;
+  max-width: 380px;
+  box-shadow: var(--shadow-hover);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 200;
+  overflow: hidden;
+}
+.notif-dropdown.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.notif-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+.notif-clear {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+}
+.notif-clear:hover { text-decoration: underline; }
+.notif-list { max-height: 360px; overflow-y: auto; }
+.notif-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.notif-item:last-child { border-bottom: none; }
+.notif-item .ico {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: rgba(0, 109, 91, 0.1);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.notif-item .ico svg { width: 16px; height: 16px; stroke: currentColor; }
+.notif-item .body { flex: 1; min-width: 0; }
+.notif-item .title {
+  font-size: 13px; font-weight: 700; color: var(--text);
+  margin-bottom: 2px;
+}
+.notif-item .text {
+  font-size: 12px; color: var(--text-muted); line-height: 1.4;
+}
+.notif-item .time {
+  font-size: 11px; color: var(--text-muted); margin-top: 4px;
+}
+.notif-empty {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.notif-empty svg {
+  width: 32px; height: 32px;
+  margin-bottom: 8px;
+  stroke: currentColor;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   Адаптив
+   ============================================================ */
+@media (max-width: 900px) {
+  .sc-data-rows {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .sc-data-rows .sc-data-row:nth-last-child(-n+2) {
+    border-bottom: 1px dashed var(--border);
+  }
+  .sc-data-rows .sc-data-row:last-child {
+    border-bottom: none;
+  }
+}
+@media (max-width: 640px) {
+  .page-head { flex-direction: column; align-items: stretch; }
+
+  .sc-card-inner {
+    padding: 20px;
+    aspect-ratio: auto;
+  }
+  .sc-photo { width: 68px; height: 82px; }
+  .sc-name { font-size: 16px; }
+  .sc-number { font-size: 18px; }
+
+  .sc-status-row { flex-direction: column; align-items: stretch; }
+  .sc-actions { flex-direction: column; }
+  .sc-btn { justify-content: center; }
+
+  .sc-data-card { padding: 20px; }
+  .sc-data-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .sc-data-row .v { text-align: left; }
+
+  .notif-dropdown { min-width: 280px; right: -40px; }
+}
+
+/* ---------- Кнопка "Назад" ---------- */
+.view-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-back:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn-back svg { width: 16px; height: 16px; stroke: currentColor; }

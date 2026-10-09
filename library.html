@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Библиотека — АмГУ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="library.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="data.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body data-theme="light" data-edu-type="budget">
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a href="https://amursu.ru/" class="logo-wrap" target="_blank" rel="noopener" title="Перейти на сайт АмГУ">
+      <img src="assets/logo-small.svg" alt="АмГУ" class="logo-mini-img">
+      <img src="assets/logo-big.svg" alt="Амурский государственный университет" class="logo-big-img">
+    </a>
+
+    <nav class="nav">
+      <a href="main.html" class="nav-item active"><i data-lucide="home"></i><span class="label">Главная</span></a>
+      <a href="messages.html" class="nav-item"><i data-lucide="mail"></i><span class="label">Сообщения</span></a>
+      <a href="survey.html" class="nav-item"><i data-lucide="clipboard-list"></i><span class="label">Анкетирование</span></a>
+      <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i><span class="label">Портфолио</span></a>
+      <a href="schedule.html" class="nav-item"><i data-lucide="calendar"></i><span class="label">Расписание</span></a>
+      <a href="deadlines.html" class="nav-item"><i data-lucide="alarm-clock"></i><span class="label">Дедлайны</span></a>
+      <a href="programs.html" class="nav-item"><i data-lucide="building-2"></i><span class="label">Образовательные программы</span></a>
+      <a href="process.html" class="nav-item"><i data-lucide="graduation-cap"></i><span class="label">Учебный процесс</span></a>
+      <a href="record-book.html" class="nav-item"><i data-lucide="book-marked"></i><span class="label">Зачётная книжка</span></a>
+      <a href="library.html" class="nav-item"><i data-lucide="library"></i><span class="label">Библиотека</span></a>
+      <a href="cybersport.html" class="nav-item"><i data-lucide="gamepad-2"></i><span class="label">Киберспорт</span></a>
+      <a href="scholarship.html" class="nav-item"><i data-lucide="award"></i><span class="label">Повышенная стипендия</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="container">
+
+      <header class="page-head">
+        <div>
+          <h1>Библиотека</h1>
+          <div class="subtitle">Электронные ресурсы и каталоги</div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="themeToggle" title="Сменить тему">
+            <i data-lucide="sun" id="themeIcon"></i>
+          </button>
+          <div class="notif-wrap">
+            <button class="icon-btn" id="notifBtn" title="Уведомления">
+              <i data-lucide="bell"></i>
+              <span class="dot" id="notifDot" style="display: none;"></span>
+            </button>
+            <div class="notif-dropdown" id="notifDropdown">
+              <div class="notif-head">
+                <span>Уведомления</span>
+                <button class="notif-clear" id="notifClear">Очистить</button>
+              </div>
+              <div class="notif-list" id="notifList"></div>
+            </div>
+          </div>
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarBtn">А</div>
+            <div class="dropdown" id="dropdown">
+              <a href="profile.html"><i data-lucide="user"></i>Профиль</a>
+              <a href="#"><i data-lucide="settings"></i>Настройки</a>
+              <hr>
+              <a href="#" class="danger"><i data-lucide="log-out"></i>Выход</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ============================================ -->
+      <!-- ЭЛЕКТРОННЫЙ КАТАЛОГ АМГУ (ИРБИС)             -->
+      <!-- ============================================ -->
+      <section class="lib-card">
+        <div class="lib-card-title">Электронный каталог АмГУ (ИРБИС)</div>
+
+        <div class="lib-note">
+          <div class="lib-note-icon">
+            <i data-lucide="info"></i>
+          </div>
+          <div class="lib-note-body">
+            <div class="lib-note-title">Пароль для скачивания с электронного каталога IRBIS.</div>
+            <div class="lib-note-text">
+              Если вы используете электронный каталог
+            </div>
+            <div class="lib-note-line">
+              <span class="lib-link">IRBIS (ссылка)</span>
+            </div>
+            <div class="lib-note-text">
+              , и при скачивании трудов АмГУ или книг полнотекстовой библиотеки выводится окно с запросом "Необходима авторизация", используйте следующие данные для авторизации:
+            </div>
+            <div class="lib-note-text">
+              <b>Логин</b> - амгу
+            </div>
+            <div class="lib-note-text">
+              <b>Пароль</b> - 123456
+            </div>
+          </div>
+        </div>
+
+        <div class="lib-links">
+          <a href="#" class="lib-link-row">Электронный каталог АмГУ (ИРБИС)</a>
+          <a href="#" class="lib-link-row">Страница научной библиотеки АмГУ</a>
+          <a href="#" class="lib-link-row">Новый электронный каталог АмГУ (Тестовый режим)</a>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ЭЛЕКТРОННЫЕ БИБЛИОТЕЧНЫЕ СИСТЕМЫ             -->
+      <!-- ============================================ -->
+      <section class="lib-section-title">
+        Электронные библиотечные системы, электронные библиотеки, современные профессиональные базы данных и информационно-справочные системы
+      </section>
+
+      <section class="lib-two-col">
+
+        <!-- ЛЕВАЯ: СПИСОК ЭБС -->
+        <div class="lib-ebs">
+          <div class="lib-ebs-row">
+            <span>ЭБС «IPRbooks»</span>
+            <i data-lucide="external-link"></i>
+          </div>
+          <div class="lib-ebs-row">
+            <span>Платформа РКИ</span>
+            <i data-lucide="external-link"></i>
+          </div>
+          <div class="lib-ebs-row">
+            <span>ЭБС Издательства «Лань»</span>
+            <i data-lucide="external-link"></i>
+          </div>
+          <div class="lib-ebs-row">
+            <span>ЭБС PROFOбразование</span>
+            <i data-lucide="external-link"></i>
+          </div>
+          <div class="lib-ebs-row">
+            <span>Образовательно-издательский центр «Академия»</span>
+          </div>
+          <div class="lib-ebs-row">
+            <span>ЭБС «Юрайт»</span>
+            <i data-lucide="external-link"></i>
+          </div>
+          <div class="lib-ebs-row">
+            <span>ЭБС Издательства «Инфра-М»</span>
+            <i data-lucide="external-link"></i>
+          </div>
+          <div class="lib-ebs-row">
+            <span>Электронная библиотека Grebennikon</span>
+            <i data-lucide="external-link"></i>
+          </div>
+          <div class="lib-ebs-row">
+            <span>НЭБ "eLibrary.ru"</span>
+          </div>
+          <div class="lib-ebs-row">
+            <span>Электронная библиотека Самарского университета</span>
+          </div>
+          <div class="lib-ebs-row">
+            <span>Электронная библиотека Grebennikon</span>
+          </div>
+          <div class="lib-ebs-row">
+            <span>Электронная библиотека «Горное образование»</span>
+          </div>
+          <div class="lib-ebs-row">
+            <span>Национальная электронная библиотека (НЭБ)</span>
+          </div>
+          <div class="lib-ebs-row">
+            <span>Обзор СМИ Polpred.com</span>
+          </div>
+          <div class="lib-ebs-row">
+            <span>Справочная правовая система «Консультант плюс»</span>
+          </div>
+          <div class="lib-ebs-row">
+            <span>ФГБУ «Федеральный институт промышленной собственности»</span>
+          </div>
+          <div class="lib-ebs-row">
+            <span>НЭИКОН (архив научных журналов)</span>
+          </div>
+        </div>
+
+        <!-- ПРАВАЯ: НАПРАВЛЕНИЯ -->
+        <div class="lib-dirs">
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 01.03.02 Прикладная математика и информатика</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 03.03.02 Физика</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 09.03.01 Информатика и вычислительная техника</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 09.03.02 Информационные системы и технологии</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 09.03.04 Программная инженерия</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 10.03.01 Информационная безопасность</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 13.03.01 Теплоэнергетика и теплотехника</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 13.03.02 Электроэнергетика и электротехника</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 15.03.04 Автоматизация технологических процессов и производств</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 18.03.01 Химическая технология</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 20.03.01 Техносферная безопасность</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 24.03.01 Ракетные комплексы и космонавтика</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 29.03.05 Конструирование изделий легкой промышленности</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 37.03.01 Психология</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 38.03.01 Экономика</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 38.03.02 Менеджмент</span>
+          </div>
+          <div class="lib-dir-row">
+            <i data-lucide="chevron-right"></i>
+            <span>по 38.03.04 Государственное и муниципальное управление</span>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

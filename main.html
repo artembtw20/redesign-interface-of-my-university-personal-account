@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>АмГУ — Личный кабинет</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="data.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body data-theme="light" data-edu-type="budget">
+
+
+
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a href="https://amursu.ru/" class="logo-wrap" target="_blank" rel="noopener" title="Перейти на сайт АмГУ">
+      <img src="assets/logo-small.svg" alt="АмГУ" class="logo-mini-img">
+      <img src="assets/logo-big.svg" alt="Амурский государственный университет" class="logo-big-img">
+    </a>
+
+    <nav class="nav">
+      <a href="main.html" class="nav-item active"><i data-lucide="home"></i><span class="label">Главная</span></a>
+      <a href="messages.html" class="nav-item"><i data-lucide="mail"></i><span class="label">Сообщения</span></a>
+      <a href="survey.html" class="nav-item"><i data-lucide="clipboard-list"></i><span class="label">Анкетирование</span></a>
+      <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i><span class="label">Портфолио</span></a>
+      <a href="schedule.html" class="nav-item"><i data-lucide="calendar"></i><span class="label">Расписание</span></a>
+      <a href="deadlines.html" class="nav-item"><i data-lucide="alarm-clock"></i><span class="label">Дедлайны</span></a>
+      <a href="programs.html" class="nav-item"><i data-lucide="building-2"></i><span class="label">Образовательные программы</span></a>
+      <a href="process.html" class="nav-item"><i data-lucide="graduation-cap"></i><span class="label">Учебный процесс</span></a>
+      <a href="record-book.html" class="nav-item"><i data-lucide="book-marked"></i><span class="label">Зачётная книжка</span></a>
+      <a href="library.html" class="nav-item"><i data-lucide="library"></i><span class="label">Библиотека</span></a>
+      <a href="cybersport.html" class="nav-item"><i data-lucide="gamepad-2"></i><span class="label">Киберспорт</span></a>
+      <a href="scholarship.html" class="nav-item"><i data-lucide="award"></i><span class="label">Повышенная стипендия</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="container">
+      <header>
+        <div>
+          <h1 id="greeting">Добро пожаловать, Артём</h1>
+          <div class="date">Загрузка...</div>
+        </div>
+        <div class="header-actions">
+          <div class="segmented" id="eduType">
+            <button data-type="budget" class="active">Бюджет</button>
+            <button data-type="paid">Платное</button>
+          </div>
+          <button class="icon-btn" id="themeToggle" title="Сменить тему">
+            <i data-lucide="sun" id="themeIcon"></i>
+          </button>
+          <button class="icon-btn"><i data-lucide="search"></i></button>
+          <button class="icon-btn">
+            <i data-lucide="bell"></i>
+            <span class="dot"></span>
+          </button>
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarBtn">А</div>
+            <div class="dropdown" id="dropdown">
+              <a href="profile.html"><i data-lucide="user"></i>Профиль</a>
+              <a href="#"><i data-lucide="settings"></i>Настройки</a>
+              <hr>
+              <a href="#" class="danger"><i data-lucide="log-out"></i>Выход</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="metrics">
+        <a class="metric metric-link" href="grades.html">
+          <div class="label">Успеваемость</div>
+          <div class="value" id="metricAvg">—</div>
+          <div class="trend" id="metricAvgTrend">За прошлую сессию</div>
+        </a>
+        <a class="metric metric-link" href="attendance.html">
+          <div class="label">Посещаемость</div>
+          <div class="value" id="metricAttendance">—</div>
+          <div class="progress"><div id="metricAttendanceBar" style="width: 0%"></div></div>
+        </a>
+        <div class="metric">
+          <div class="label">Задолженности в сессию</div>
+          <div class="value">0</div>
+          <div class="trend">Всё сдано ✓</div>
+        </div>
+        <div class="metric" id="adaptiveMetric">
+          <div class="label">Стипендия</div>
+          <div class="value">✓</div>
+          <div class="trend">Начислена</div>
+        </div>
+      </section>
+
+      <section class="grid-main">
+        <div class="card">
+          <div class="card-head">
+            <h2 id="todayTitle">Расписание на сегодня</h2>
+            <a href="schedule.html">Вся неделя →</a>
+          </div>
+          <div id="todaySchedule"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h2>Срочные дедлайны <span class="count-badge" id="deadlinesCount">0</span></h2>
+            <a href="deadlines.html">Все →</a>
+          </div>
+          <div id="urgentDeadlinesList"></div>
+        </div>
+      </section>
+
+      <section class="grid-bottom">
+        <div class="card">
+          <div class="card-head">
+            <h2>Объявления</h2>
+            <a href="#">Все →</a>
+          </div>
+          <div class="empty">
+            <i data-lucide="bell-off"></i>
+            <div>Новых объявлений нет</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h2>Электронное обучение</h2>
+            <a href="#">Открыть →</a>
+          </div>
+          <div class="empty">
+            <i data-lucide="book-open"></i>
+            <div>Философия. Дистанционное обучение<br><span style="font-size:11px">Черенкова О.С.</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h2>Быстрый доступ</h2>
+          </div>
+          <div class="quick-grid">
+            <a href="schedule.html" class="quick-item"><i data-lucide="calendar-days"></i>Расписание</a>
+            <a href="deadlines.html" class="quick-item"><i data-lucide="alarm-clock"></i>Дедлайны</a>
+            <a href="grades.html" class="quick-item"><i data-lucide="star"></i>Успеваемость</a>
+            <a href="attendance.html" class="quick-item"><i data-lucide="clipboard-check"></i>Посещаемость</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Администратор — АмГУ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="admin.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="data.js"></script>
+<script defer src="app.js"></script>
+<script defer src="admin.js"></script>
+</head>
+<body data-theme="light" data-edu-type="budget">
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a href="https://amursu.ru/" class="logo-wrap" target="_blank" rel="noopener" title="Перейти на сайт АмГУ">
+      <img src="assets/logo-small.svg" alt="АмГУ" class="logo-mini-img">
+      <img src="assets/logo-big.svg" alt="Амурский государственный университет" class="logo-big-img">
+    </a>
+
+    <nav class="nav">
+      <a href="admin.html" class="nav-item active"><i data-lucide="layout-dashboard"></i><span class="label">Расписание</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="container">
+
+      <header class="page-head">
+        <div>
+          <h1>Кабинет администратора</h1>
+          <div class="subtitle">Учебный отдел · Управление расписанием</div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="themeToggle" title="Сменить тему">
+            <i data-lucide="sun" id="themeIcon"></i>
+          </button>
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarBtn">УО</div>
+            <div class="dropdown" id="dropdown">
+              <a href="#"><i data-lucide="user"></i>Профиль</a>
+              <a href="#" class="danger"><i data-lucide="log-out"></i>Выход</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Управление -->
+      <section class="controls">
+        <div class="control-group">
+          <label for="groupSelect">Группа:</label>
+          <select id="groupSelect"></select>
+        </div>
+
+        <div class="chips">
+          <span class="chip chip-accent"><span class="dot-chip"></span><span id="chipWeek">1-я неделя</span></span>
+        </div>
+      </section>
+
+      <!-- Переключатель недель -->
+      <div class="week-nav">
+        <button class="week-nav-btn" id="prevWeek" title="Предыдущая неделя">
+          <i data-lucide="chevron-left"></i>
+        </button>
+        <div class="week-nav-center">
+          <div class="week-nav-range" id="weekRange">—</div>
+          <div class="week-nav-sub" id="weekSub">—</div>
+        </div>
+        <button class="week-nav-btn" id="nextWeek" title="Следующая неделя">
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Таблица -->
+      <div class="schedule-wrap">
+        <div class="schedule-scroll">
+          <table class="schedule-table" id="scheduleTable">
+            <thead>
+              <tr id="scheduleHead"></tr>
+            </thead>
+            <tbody id="scheduleBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="hint">
+        <i data-lucide="pencil"></i>
+        <span>Кликни по ячейке, чтобы изменить пару, преподавателя, аудиторию или тип</span>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

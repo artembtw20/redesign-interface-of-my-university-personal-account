@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Кабинет преподавателя — АмГУ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="teacher.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="data.js"></script>
+<script defer src="app.js"></script>
+<script defer src="teacher.js"></script>
+</head>
+<body data-theme="light" data-edu-type="budget">
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a href="https://amursu.ru/" class="logo-wrap" target="_blank" rel="noopener" title="Перейти на сайт АмГУ">
+      <img src="assets/logo-small.svg" alt="АмГУ" class="logo-mini-img">
+      <img src="assets/logo-big.svg" alt="Амурский государственный университет" class="logo-big-img">
+    </a>
+
+    <nav class="nav">
+      <a href="teacher.html" class="nav-item active"><i data-lucide="layout-dashboard"></i><span class="label">Кабинет</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="container">
+
+      <header class="page-head">
+        <div>
+          <h1>Кабинет преподавателя</h1>
+          <div class="subtitle" id="teacherInfo">—</div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="themeToggle" title="Сменить тему">
+            <i data-lucide="sun" id="themeIcon"></i>
+          </button>
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarBtn">—</div>
+            <div class="dropdown" id="dropdown">
+              <a href="#"><i data-lucide="user"></i>Профиль</a>
+              <a href="#" class="danger"><i data-lucide="log-out"></i>Выход</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Управление: группа + табы -->
+      <section class="controls">
+        <div class="control-group">
+          <label for="groupSelect">Группа:</label>
+          <select id="groupSelect"></select>
+        </div>
+
+        <div class="tabs" id="tabs">
+          <button class="tab active" data-tab="attendance">
+            <i data-lucide="clipboard-check"></i> Посещаемость
+          </button>
+          <button class="tab" data-tab="grades">
+            <i data-lucide="star"></i> Оценки
+          </button>
+        </div>
+      </section>
+
+      <!-- === ТАБ: ПОСЕЩАЕМОСТЬ === -->
+      <section class="tab-content" id="tab-attendance">
+
+        <div class="card">
+          <div class="card-head-row">
+            <div class="control-group">
+              <label for="dateSelect">Дата занятия:</label>
+              <select id="dateSelect"></select>
+            </div>
+            <button class="btn-primary" id="saveAttendance">
+              <i data-lucide="save"></i> Сохранить
+            </button>
+          </div>
+
+          <div class="students-list" id="attendanceStudents"></div>
+        </div>
+
+      </section>
+
+      <!-- === ТАБ: ОЦЕНКИ === -->
+      <section class="tab-content hidden" id="tab-grades">
+
+        <div class="card">
+          <div class="card-head-row">
+            <div class="subtitle" id="gradesSubject">—</div>
+            <button class="btn-primary" id="saveGrades">
+              <i data-lucide="save"></i> Сохранить
+            </button>
+          </div>
+
+          <div class="students-list" id="gradesStudents"></div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

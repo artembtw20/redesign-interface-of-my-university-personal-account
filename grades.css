@@ -1,0 +1,193 @@
+/* ============================================================
+   УСПЕВАЕМОСТЬ — стили страницы grades.html
+   Подключается ПОСЛЕ styles.css
+   ============================================================ */
+
+/* ---------- Шапка страницы ---------- */
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.page-head h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.page-head .subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ---------- Чипсы ---------- */
+.stats-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.chip .chip-num {
+  font-weight: 800;
+  font-size: 14px;
+}
+.chip.success {
+  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--success);
+}
+.chip.success svg { stroke: currentColor; }
+
+/* ---------- Фильтр семестра ---------- */
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.filters label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.filters select {
+  padding: 9px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  min-width: 200px;
+}
+.filters select:focus { border-color: var(--accent); }
+
+/* ---------- Список оценок ---------- */
+.grades-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grade-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 22px 18px 26px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+  overflow: hidden;
+}
+.grade-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Цветная полоса слева — по оценке */
+.grade-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--text-muted);
+}
+.grade-card.grade-5::before { background: var(--success); }
+.grade-card.grade-4::before { background: var(--info);    }
+.grade-card.grade-3::before { background: var(--warning); }
+.grade-card.grade-2::before { background: var(--danger);  }
+
+.grade-body {
+  flex: 1;
+  min-width: 0;
+}
+.grade-subject {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.grade-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.grade-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.grade-meta svg {
+  width: 13px; height: 13px;
+  stroke: currentColor;
+  opacity: 0.7;
+}
+
+.grade-value {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  min-width: 50px;
+  text-align: right;
+  line-height: 1;
+}
+.grade-5 .grade-value { color: var(--success); }
+.grade-4 .grade-value { color: var(--info);    }
+.grade-3 .grade-value { color: var(--warning); }
+.grade-2 .grade-value { color: var(--danger);  }
+
+/* Пустое состояние */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+}
+.empty-state svg {
+  width: 48px; height: 48px;
+  margin-bottom: 14px;
+  stroke: currentColor;
+  opacity: 0.4;
+}
+.empty-state .title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.empty-state .desc { font-size: 13px; }
+
+/* Адаптив */
+@media (max-width: 640px) {
+  .page-head { flex-direction: column; align-items: stretch; }
+  .grade-card { padding: 16px 16px 16px 22px; gap: 14px; }
+  .grade-value { font-size: 26px; min-width: 40px; }
+  .filters { flex-direction: column; align-items: stretch; }
+  .filters select { width: 100%; }
+}

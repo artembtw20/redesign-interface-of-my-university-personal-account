@@ -1,0 +1,148 @@
+/* ============================================================
+   Стартовая страница — выбор роли
+   ============================================================ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Exo 2', system-ui, sans-serif;
+  background: #F5F7FA;
+  color: #0F172A;
+  min-height: 100vh;
+  font-weight: 500;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(900px 600px at 15% -10%, rgba(0, 109, 91, 0.10), transparent 60%),
+    radial-gradient(700px 500px at 90% 110%, rgba(0, 44, 74, 0.10), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.login-page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 60px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.login-head {
+  text-align: center;
+}
+.login-logo {
+  display: inline-block;
+  background: #fff;
+  padding: 12px 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 44, 74, 0.08);
+  margin-bottom: 24px;
+}
+.login-logo img {
+  height: 44px;
+  display: block;
+}
+.login-head h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.login-sub {
+  color: #64748B;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* ---------- Карточки ролей ---------- */
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.role-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 18px;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.role-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 44, 74, 0.10);
+  border-color: #006D5B;
+}
+
+.role-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  margin-bottom: 6px;
+}
+.role-icon svg {
+  width: 24px; height: 24px;
+  stroke: currentColor;
+}
+.role-student {
+  background: rgba(0, 109, 91, 0.10);
+  color: #006D5B;
+}
+.role-teacher {
+  background: rgba(59, 130, 246, 0.12);
+  color: #1D4ED8;
+}
+.role-admin-icon {
+  background: rgba(239, 68, 68, 0.10);
+  color: #B91C1C;
+}
+
+.role-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748B;
+}
+.role-name {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #0F172A;
+}
+.role-desc {
+  font-size: 13px;
+  color: #64748B;
+  margin-top: 2px;
+}
+
+.role-admin .role-title { color: #B91C1C; }
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 640px) {
+  .login-page { padding: 32px 16px; gap: 24px; }
+  .login-head h1 { font-size: 22px; }
+  .login-logo img { height: 32px; }
+  .role-grid { grid-template-columns: 1fr; gap: 12px; }
+  .role-card { padding: 18px; }
+}

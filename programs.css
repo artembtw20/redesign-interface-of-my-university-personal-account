@@ -1,0 +1,443 @@
+/* ============================================================
+   ОБРАЗОВАТЕЛЬНЫЕ ПРОГРАММЫ — стили programs.html
+   ============================================================ */
+
+/* ---------- Шапка ---------- */
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.page-head h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.page-head .subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.view.hidden { display: none !important; }
+
+/* ============================================================
+   МЕНЮ ПОДРАЗДЕЛОВ
+   ============================================================ */
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+.menu-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent);
+}
+
+.menu-item-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.menu-item-left svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--accent);
+  flex-shrink: 0;
+}
+
+.menu-arrow {
+  width: 18px;
+  height: 18px;
+  stroke: var(--text-muted);
+  transition: transform 0.15s;
+}
+.menu-item:hover .menu-arrow {
+  stroke: var(--accent);
+  transform: translateX(3px);
+}
+
+/* ============================================================
+   ПАНЕЛЬ НАЗАД
+   ============================================================ */
+.view-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-back:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn-back svg { width: 16px; height: 16px; stroke: currentColor; }
+
+/* ============================================================
+   АККОРДЕОН (документы)
+   ============================================================ */
+.accordion {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.accordion-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.accordion-head:hover { background: var(--bg); }
+
+.acc-arrow {
+  width: 18px;
+  height: 18px;
+  stroke: var(--text-muted);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.accordion.open .acc-arrow {
+  transform: rotate(0);
+}
+.accordion:not(.open) .acc-arrow {
+  transform: rotate(-90deg);
+}
+
+.accordion-body {
+  display: none;
+  border-top: 1px solid var(--border);
+}
+.accordion.open .accordion-body {
+  display: block;
+}
+
+/* ============================================================
+   ТАБЛИЦА ДОКУМЕНТОВ
+   ============================================================ */
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.doc-table td {
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.doc-table tr:last-child td { border-bottom: none; }
+.doc-table .k {
+  width: 280px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.doc-table .v {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.doc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.doc-list li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.doc-list li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+/* Ссылка внутри списка (синий текст, но некликабельная) */
+.doc-link {
+  color: #2563EB;
+  cursor: pointer;
+}
+body[data-theme="dark"] .doc-link { color: #60A5FA; }
+.doc-link:hover { text-decoration: underline; }
+
+.ext {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* ============================================================
+   КУРСЫ ПО ВЫБОРУ
+   ============================================================ */
+.courses-head {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px 14px 0 0;
+  border-bottom: none;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.courses-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+.courses-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.courses-table-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0 0 14px 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.courses-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.courses-group-head td {
+  padding: 12px 22px;
+  background: var(--bg);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--border);
+}
+
+.courses-row td {
+  padding: 13px 22px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
+  color: var(--text);
+  vertical-align: middle;
+}
+.courses-row:last-child td { border-bottom: none; }
+.courses-row:hover { background: var(--bg); }
+
+.courses-row .check-cell {
+  width: 60px;
+  text-align: right;
+}
+
+/* Кастомный чекбокс */
+.courses-check {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* ============================================================
+   ИСТОРИЯ МЕРОПРИЯТИЙ
+   ============================================================ */
+.history-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.history-title {
+  padding: 16px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #2563EB;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+body[data-theme="dark"] .history-title { color: #60A5FA; }
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.history-table td {
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
+  vertical-align: top;
+}
+.history-table tr:last-child td { border-bottom: none; }
+.history-table .k {
+  width: 280px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.history-table .v {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ============================================================
+   УВЕДОМЛЕНИЯ
+   ============================================================ */
+.notif-wrap { position: relative; }
+.notif-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  min-width: 320px;
+  max-width: 380px;
+  box-shadow: var(--shadow-hover);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 200;
+  overflow: hidden;
+}
+.notif-dropdown.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.notif-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+.notif-clear {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+}
+.notif-clear:hover { text-decoration: underline; }
+.notif-list { max-height: 360px; overflow-y: auto; }
+.notif-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.notif-item:last-child { border-bottom: none; }
+.notif-item .ico {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: rgba(0, 109, 91, 0.1);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.notif-item .ico svg { width: 16px; height: 16px; stroke: currentColor; }
+.notif-item .body { flex: 1; min-width: 0; }
+.notif-item .title {
+  font-size: 13px; font-weight: 700; color: var(--text);
+  margin-bottom: 2px;
+}
+.notif-item .text {
+  font-size: 12px; color: var(--text-muted); line-height: 1.4;
+}
+.notif-item .time {
+  font-size: 11px; color: var(--text-muted); margin-top: 4px;
+}
+.notif-empty {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.notif-empty svg {
+  width: 32px; height: 32px;
+  margin-bottom: 8px;
+  stroke: currentColor;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   Адаптив
+   ============================================================ */
+@media (max-width: 900px) {
+  .doc-table .k,
+  .history-table .k { width: 180px; font-size: 12.5px; }
+  .doc-table td,
+  .history-table td { padding: 12px 16px; font-size: 13px; }
+}
+@media (max-width: 640px) {
+  .page-head { flex-direction: column; align-items: stretch; }
+  .menu-item { padding: 16px 18px; font-size: 14px; }
+  .doc-table .k,
+  .history-table .k { width: auto; display: block; padding-bottom: 4px; border-bottom: none; }
+  .doc-table td,
+  .history-table td { display: block; padding: 10px 16px; }
+  .doc-table tr,
+  .history-table tr { display: block; border-bottom: 1px solid var(--border); }
+  .courses-row td { padding: 12px 16px; font-size: 12.5px; }
+  .notif-dropdown { min-width: 280px; right: -40px; }
+}

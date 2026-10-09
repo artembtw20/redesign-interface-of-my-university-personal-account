@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Посещаемость — АмГУ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="attendance.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="data.js"></script>
+<script defer src="app.js"></script>
+<script defer src="attendance.js"></script>
+</head>
+<body data-theme="light" data-edu-type="budget">
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a href="https://amursu.ru/" class="logo-wrap" target="_blank" rel="noopener" title="Перейти на сайт АмГУ">
+      <img src="assets/logo-small.svg" alt="АмГУ" class="logo-mini-img">
+      <img src="assets/logo-big.svg" alt="Амурский государственный университет" class="logo-big-img">
+    </a>
+
+    <nav class="nav">
+      <a href="main.html" class="nav-item active"><i data-lucide="home"></i><span class="label">Главная</span></a>
+      <a href="messages.html" class="nav-item"><i data-lucide="mail"></i><span class="label">Сообщения</span></a>
+      <a href="survey.html" class="nav-item"><i data-lucide="clipboard-list"></i><span class="label">Анкетирование</span></a>
+      <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i><span class="label">Портфолио</span></a>
+      <a href="schedule.html" class="nav-item"><i data-lucide="calendar"></i><span class="label">Расписание</span></a>
+      <a href="deadlines.html" class="nav-item"><i data-lucide="alarm-clock"></i><span class="label">Дедлайны</span></a>
+      <a href="programs.html" class="nav-item"><i data-lucide="building-2"></i><span class="label">Образовательные программы</span></a>
+      <a href="process.html" class="nav-item"><i data-lucide="graduation-cap"></i><span class="label">Учебный процесс</span></a>
+      <a href="record-book.html" class="nav-item"><i data-lucide="book-marked"></i><span class="label">Зачётная книжка</span></a>
+      <a href="library.html" class="nav-item"><i data-lucide="library"></i><span class="label">Библиотека</span></a>
+      <a href="cybersport.html" class="nav-item"><i data-lucide="gamepad-2"></i><span class="label">Киберспорт</span></a>
+      <a href="scholarship.html" class="nav-item"><i data-lucide="award"></i><span class="label">Повышенная стипендия</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="container">
+
+      <header class="page-head">
+        <div>
+          <h1>Посещаемость</h1>
+          <div class="subtitle">Весь семестр · группа 5106-об</div>
+        </div>
+        <div class="header-actions">
+          <div class="segmented" id="eduType">
+            <button data-type="budget" class="active">Бюджет</button>
+            <button data-type="paid">Платное</button>
+          </div>
+          <button class="icon-btn" id="themeToggle" title="Сменить тему">
+            <i data-lucide="sun" id="themeIcon"></i>
+          </button>
+          <button class="icon-btn"><i data-lucide="search"></i></button>
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarBtn">А</div>
+            <div class="dropdown" id="dropdown">
+              <a href="#"><i data-lucide="user"></i>Профиль</a>
+              <a href="#"><i data-lucide="settings"></i>Настройки</a>
+              <hr>
+              <a href="#" class="danger"><i data-lucide="log-out"></i>Выход</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Верхний блок: круг + чипсы -->
+      <section class="att-top">
+        <div class="att-circle-wrap">
+          <svg class="att-circle" viewBox="0 0 200 200" aria-hidden="true">
+            <circle class="att-circle-bg" cx="100" cy="100" r="84" />
+            <circle class="att-circle-fg" id="attCircleFg" cx="100" cy="100" r="84" />
+          </svg>
+          <div class="att-circle-text">
+            <div class="att-percent" id="attPercent">0%</div>
+            <div class="att-fraction" id="attFraction">0 / 0</div>
+          </div>
+        </div>
+
+        <div class="att-chips">
+          <span class="chip"><span class="chip-num" id="statTotal">0</span> всего за семестр</span>
+          <span class="chip"><span class="chip-num" id="statElapsed">0</span> прошло</span>
+          <span class="chip success"><span class="chip-num" id="statPresent">0</span> посещено</span>
+          <span class="chip danger"><span class="chip-num" id="statAbsent">0</span> пропущено</span>
+          <span class="chip"><span class="chip-num" id="statAhead">0</span> впереди</span>
+        </div>
+      </section>
+
+      <!-- Список предметов -->
+      <section class="att-list" id="attList"></section>
+
+    </div>
+  </main>
+
+</body>
+</html>

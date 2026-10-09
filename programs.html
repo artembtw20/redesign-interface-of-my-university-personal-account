@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Образовательные программы — АмГУ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="programs.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="data.js"></script>
+<script defer src="app.js"></script>
+<script defer src="programs.js"></script>
+</head>
+<body data-theme="light" data-edu-type="budget">
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a href="https://amursu.ru/" class="logo-wrap" target="_blank" rel="noopener" title="Перейти на сайт АмГУ">
+      <img src="assets/logo-small.svg" alt="АмГУ" class="logo-mini-img">
+      <img src="assets/logo-big.svg" alt="Амурский государственный университет" class="logo-big-img">
+    </a>
+
+    <nav class="nav">
+      <a href="main.html" class="nav-item active"><i data-lucide="home"></i><span class="label">Главная</span></a>
+      <a href="messages.html" class="nav-item"><i data-lucide="mail"></i><span class="label">Сообщения</span></a>
+      <a href="survey.html" class="nav-item"><i data-lucide="clipboard-list"></i><span class="label">Анкетирование</span></a>
+      <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i><span class="label">Портфолио</span></a>
+      <a href="schedule.html" class="nav-item"><i data-lucide="calendar"></i><span class="label">Расписание</span></a>
+      <a href="deadlines.html" class="nav-item"><i data-lucide="alarm-clock"></i><span class="label">Дедлайны</span></a>
+      <a href="programs.html" class="nav-item"><i data-lucide="building-2"></i><span class="label">Образовательные программы</span></a>
+      <a href="process.html" class="nav-item"><i data-lucide="graduation-cap"></i><span class="label">Учебный процесс</span></a>
+      <a href="record-book.html" class="nav-item"><i data-lucide="book-marked"></i><span class="label">Зачётная книжка</span></a>
+      <a href="library.html" class="nav-item"><i data-lucide="library"></i><span class="label">Библиотека</span></a>
+      <a href="cybersport.html" class="nav-item"><i data-lucide="gamepad-2"></i><span class="label">Киберспорт</span></a>
+      <a href="scholarship.html" class="nav-item"><i data-lucide="award"></i><span class="label">Повышенная стипендия</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="container">
+
+      <header class="page-head">
+        <div>
+          <h1 id="pageTitle">Образовательные программы</h1>
+          <div class="subtitle" id="pageSubtitle">Документы, курсы по выбору, история</div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="themeToggle" title="Сменить тему">
+            <i data-lucide="sun" id="themeIcon"></i>
+          </button>
+
+          <div class="notif-wrap">
+            <button class="icon-btn" id="notifBtn" title="Уведомления">
+              <i data-lucide="bell"></i>
+              <span class="dot" id="notifDot" style="display: none;"></span>
+            </button>
+            <div class="notif-dropdown" id="notifDropdown">
+              <div class="notif-head">
+                <span>Уведомления</span>
+                <button class="notif-clear" id="notifClear">Очистить</button>
+              </div>
+              <div class="notif-list" id="notifList"></div>
+            </div>
+          </div>
+
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarBtn">А</div>
+            <div class="dropdown" id="dropdown">
+              <a href="profile.html"><i data-lucide="user"></i>Профиль</a>
+              <a href="#"><i data-lucide="settings"></i>Настройки</a>
+              <hr>
+              <a href="#" class="danger"><i data-lucide="log-out"></i>Выход</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 1: МЕНЮ ПОДРАЗДЕЛОВ                    -->
+      <!-- ============================================ -->
+      <section class="view" id="view-menu">
+        <div class="menu-list">
+          <a href="#" class="menu-item" data-view="documents">
+            <div class="menu-item-left">
+              <i data-lucide="file-text"></i>
+              <span>Документы образовательных программ</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+
+          <a href="#" class="menu-item" data-view="courses">
+            <div class="menu-item-left">
+              <i data-lucide="list-checks"></i>
+              <span>Запись на курсы по выбору</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+
+          <a href="#" class="menu-item" data-view="history">
+            <div class="menu-item-left">
+              <i data-lucide="history"></i>
+              <span>История мероприятий</span>
+            </div>
+            <i data-lucide="chevron-right" class="menu-arrow"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 2: ДОКУМЕНТЫ ОБРАЗОВАТЕЛЬНЫХ ПРОГРАММ  -->
+      <!-- ============================================ -->
+      <section class="view hidden" id="view-documents">
+        <div class="view-toolbar">
+          <button class="btn-back" data-back="menu">
+            <i data-lucide="chevron-left"></i> Назад
+          </button>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-head" id="accDocsHead">
+            <i data-lucide="chevron-down" class="acc-arrow"></i>
+            <span>10.03.01 Информационная безопасность (Очная)</span>
+          </div>
+
+          <div class="accordion-body" id="accDocsBody">
+            <table class="doc-table">
+              <tbody>
+                <tr>
+                  <td class="k">Образовательная программа</td>
+                  <td class="v">10.03.01 Информационная безопасность</td>
+                </tr>
+                <tr>
+                  <td class="k">Профиль</td>
+                  <td class="v">10.03.01-2 · Безопасность автоматизированных систем (по отрасли или в сфере профессиональной деятельности)</td>
+                </tr>
+                <tr>
+                  <td class="k">Форма обучения</td>
+                  <td class="v">Очная</td>
+                </tr>
+                <tr>
+                  <td class="k">Срок обучения</td>
+                  <td class="v">2025–2029</td>
+                </tr>
+                <tr>
+                  <td class="k">Факультет</td>
+                  <td class="v">Институт компьютерных и инженерных наук</td>
+                </tr>
+                <tr>
+                  <td class="k">Описание образовательной программы</td>
+                  <td class="v">
+                    <ul class="doc-list">
+                      <li><span class="doc-link">10.03.01 Информационная безопасность-Безопасность автоматизированных систем-2025</span> <span class="ext">(.sig)</span></li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="k">Учебный план</td>
+                  <td class="v">
+                    <ul class="doc-list">
+                      <li><span class="doc-link">УП-10.03.01.02-О-2025-3+ Информационная безопасность-Безопасность автоматизированных систем</span> <span class="ext">(.sig)</span></li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="k">Календарный учебный график</td>
+                  <td class="v">
+                    <ul class="doc-list">
+                      <li><span class="doc-link">Календарный учебный график на 2026–2027 уч. год</span> <span class="ext">(.sig)</span></li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="k">Рабочие программы дисциплин и программ ГИА</td>
+                  <td class="v">
+                    <ul class="doc-list" id="disciplinesList"></ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="k">Программы практик</td>
+                  <td class="v">
+                    <ul class="doc-list">
+                      <li><span class="doc-link">Производственная практика (преддипломная практика)</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">Производственная практика (технологическая практика)</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">Производственная практика (эксплуатационная практика)</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">Учебная практика (исследовательская практика)</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">Учебная практика (ознакомительная практика)</span> <span class="ext">(.sig)</span></li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="k">Методические и иные документы</td>
+                  <td class="v">
+                    <ul class="doc-list">
+                      <li><span class="doc-link">10.03.01 Информационная безопасность-2025-ГИА (ЛДГИА)</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">10.03.01 Информационная безопасность-2025 (ЛД)</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">10.03.01 Информационная безопасность-2025-практики (ЛДП)</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">Государственная итоговая аттестация-2026</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">Календарный план воспитательной работы 2026-2027</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">Методические рекомендации для подготовки к ГИА</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">Методические рекомендации по освоению дисциплин</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">Оценочные материалы-2026</span> <span class="ext">(.sig)</span></li>
+                      <li><span class="doc-link">Рабочая программа воспитания-2026</span> <span class="ext">(.sig)</span></li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 3: ЗАПИСЬ НА КУРСЫ ПО ВЫБОРУ           -->
+      <!-- ============================================ -->
+      <section class="view hidden" id="view-courses">
+        <div class="view-toolbar">
+          <button class="btn-back" data-back="menu">
+            <i data-lucide="chevron-left"></i> Назад
+          </button>
+        </div>
+
+        <div class="courses-head">
+          <span class="courses-title">Выбранные дисциплины:</span>
+          <span class="courses-sub">Бакалавриат · 10.03.01 Информационная безопасность · 2026–2027 · Очная</span>
+        </div>
+
+        <div class="courses-table-wrap">
+          <table class="courses-table">
+            <tbody id="coursesBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 4: ИСТОРИЯ МЕРОПРИЯТИЙ                 -->
+      <!-- ============================================ -->
+      <section class="view hidden" id="view-history">
+        <div class="view-toolbar">
+          <button class="btn-back" data-back="menu">
+            <i data-lucide="chevron-left"></i> Назад
+          </button>
+        </div>
+
+        <div class="history-card">
+          <div class="history-title">
+            История мероприятий: Бакалавриат: 10.03.01 Информационная безопасность 2026-2027 (Очная)
+          </div>
+          <table class="history-table">
+            <tbody>
+              <tr>
+                <td class="k">Перевод на следующий курс</td>
+                <td class="v">приказ (распоряжение) №1980-уч от 24.07.2026</td>
+              </tr>
+              <tr>
+                <td class="k">Перевод из другого вуза</td>
+                <td class="v">приказ (распоряжение) №456-уч от 25.02.2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

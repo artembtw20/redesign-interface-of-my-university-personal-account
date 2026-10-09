@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Сообщения — АмГУ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="messages.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="data.js"></script>
+<script defer src="app.js"></script>
+<script defer src="messages.js"></script>
+</head>
+<body data-theme="light" data-edu-type="budget">
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a href="https://amursu.ru/" class="logo-wrap" target="_blank" rel="noopener" title="Перейти на сайт АмГУ">
+      <img src="assets/logo-small.svg" alt="АмГУ" class="logo-mini-img">
+      <img src="assets/logo-big.svg" alt="Амурский государственный университет" class="logo-big-img">
+    </a>
+
+    <nav class="nav">
+      <a href="main.html" class="nav-item active"><i data-lucide="home"></i><span class="label">Главная</span></a>
+      <a href="messages.html" class="nav-item"><i data-lucide="mail"></i><span class="label">Сообщения</span></a>
+      <a href="survey.html" class="nav-item"><i data-lucide="clipboard-list"></i><span class="label">Анкетирование</span></a>
+      <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i><span class="label">Портфолио</span></a>
+      <a href="schedule.html" class="nav-item"><i data-lucide="calendar"></i><span class="label">Расписание</span></a>
+      <a href="deadlines.html" class="nav-item"><i data-lucide="alarm-clock"></i><span class="label">Дедлайны</span></a>
+      <a href="programs.html" class="nav-item"><i data-lucide="building-2"></i><span class="label">Образовательные программы</span></a>
+      <a href="process.html" class="nav-item"><i data-lucide="graduation-cap"></i><span class="label">Учебный процесс</span></a>
+      <a href="record-book.html" class="nav-item"><i data-lucide="book-marked"></i><span class="label">Зачётная книжка</span></a>
+      <a href="library.html" class="nav-item"><i data-lucide="library"></i><span class="label">Библиотека</span></a>
+      <a href="cybersport.html" class="nav-item"><i data-lucide="gamepad-2"></i><span class="label">Киберспорт</span></a>
+      <a href="scholarship.html" class="nav-item"><i data-lucide="award"></i><span class="label">Повышенная стипендия</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="container">
+
+      <header class="page-head">
+        <div>
+          <h1>Сообщения</h1>
+          <div class="subtitle">Синхронное и асинхронное общение</div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="themeToggle" title="Сменить тему">
+            <i data-lucide="sun" id="themeIcon"></i>
+          </button>
+
+          <div class="notif-wrap">
+            <button class="icon-btn" id="notifBtn" title="Уведомления">
+              <i data-lucide="bell"></i>
+              <span class="dot" id="notifDot" style="display: none;"></span>
+            </button>
+            <div class="notif-dropdown" id="notifDropdown">
+              <div class="notif-head">
+                <span>Уведомления</span>
+                <button class="notif-clear" id="notifClear">Очистить</button>
+              </div>
+              <div class="notif-list" id="notifList"></div>
+            </div>
+          </div>
+
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarBtn">А</div>
+            <div class="dropdown" id="dropdown">
+              <a href="profile.html"><i data-lucide="user"></i>Профиль</a>
+              <a href="#"><i data-lucide="settings"></i>Настройки</a>
+              <hr>
+              <a href="#" class="danger"><i data-lucide="log-out"></i>Выход</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 1: СПИСОК ЧАТОВ                        -->
+      <!-- ============================================ -->
+      <section class="view" id="view-list">
+
+        <div class="messages-toolbar">
+          <button class="btn-primary" id="btnNewChat">
+            <i data-lucide="plus"></i> Новая комната
+          </button>
+          <button class="btn-ghost" id="btnEmail">
+            <i data-lucide="mail"></i> Электронная почта
+          </button>
+        </div>
+
+        <div class="list-chats" id="chatsList"></div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 2: СОЗДАНИЕ ЧАТА                       -->
+      <!-- ============================================ -->
+      <section class="view hidden" id="view-new">
+
+        <div class="view-toolbar">
+          <button class="btn-back" id="btnBack">
+            <i data-lucide="chevron-left"></i> Назад
+          </button>
+        </div>
+
+        <div class="new-chat-form">
+          <div class="field">
+            <label>Название (необязательно)</label>
+            <input id="newChatTitle" type="text" placeholder="Например: Обсуждение курсовой">
+          </div>
+          <div class="field">
+            <label>Участники</label>
+            <select id="newChatParticipants" disabled>
+              <option>Выберите одного участника ниже</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="people-grid">
+          <div class="people-col">
+            <div class="people-title">
+              <i data-lucide="users"></i>
+              <span>Мои одногруппники</span>
+              <span class="people-count" id="groupCount">—</span>
+            </div>
+            <div class="people-list" id="classmatesList"></div>
+          </div>
+
+          <div class="people-col">
+            <div class="people-title">
+              <i data-lucide="graduation-cap"></i>
+              <span>Мои преподаватели</span>
+            </div>
+            <div class="people-list" id="teachersList"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ЭКРАН 3: ЧАТ                                 -->
+      <!-- ============================================ -->
+      <section class="view hidden" id="view-chat">
+
+        <div class="view-toolbar">
+          <button class="btn-back" id="btnChatBack">
+            <i data-lucide="chevron-left"></i> Назад
+          </button>
+          <div class="chat-title" id="chatTitle">—</div>
+        </div>
+
+        <div class="chat-body" id="chatBody"></div>
+
+        <div class="chat-input-wrap">
+          <input id="chatInput" type="text" placeholder="Написать сообщение...">
+          <button class="btn-send" id="btnSend">
+            <i data-lucide="send"></i>
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

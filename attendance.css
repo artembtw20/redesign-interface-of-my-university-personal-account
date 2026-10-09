@@ -1,0 +1,264 @@
+/* ============================================================
+   ПОСЕЩАЕМОСТЬ — стили страницы attendance.html
+   Подключается ПОСЛЕ styles.css
+   ============================================================ */
+
+/* ---------- Шапка страницы ---------- */
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.page-head h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.page-head .subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   ВЕРХНИЙ БЛОК: круг + чипсы
+   ============================================================ */
+.att-top {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.att-circle-wrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+}
+.att-circle {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.att-circle-bg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 18;
+}
+.att-circle-fg {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 18;
+  stroke-linecap: round;
+  stroke-dasharray: 528; /* 2πR, R=84 */
+  stroke-dashoffset: 528;
+  transition: stroke-dashoffset 0.6s ease;
+}
+.att-circle-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.att-percent {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text);
+}
+.att-fraction {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* Чипсы */
+.att-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: center;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 22px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.chip .chip-num {
+  font-weight: 800;
+  font-size: 15px;
+}
+.chip.success { border-color: rgba(16, 185, 129, 0.3); color: var(--success); background: rgba(16, 185, 129, 0.06); }
+.chip.danger  { border-color: rgba(239, 68, 68, 0.3);  color: var(--danger);  background: rgba(239, 68, 68, 0.06);  }
+.chip.warn    { border-color: rgba(245, 158, 11, 0.3); color: var(--warning); background: rgba(245, 158, 11, 0.06); }
+
+/* ============================================================
+   СПИСОК ПРЕДМЕТОВ
+   ============================================================ */
+.att-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subject-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+.subject-card:hover { box-shadow: var(--shadow-hover); }
+
+.subject-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+}
+.subject-head:hover { background: var(--bg); }
+
+.subject-name {
+  flex: 1;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+  min-width: 0;
+}
+
+.subject-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.subject-progress .num {
+  font-weight: 700;
+  color: var(--text);
+}
+.subject-bar {
+  width: 100px;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.subject-bar > div {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+.subject-percent {
+  font-weight: 700;
+  min-width: 42px;
+  text-align: right;
+}
+
+.subject-chevron {
+  width: 20px; height: 20px;
+  stroke: currentColor;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.subject-card.open .subject-chevron { transform: rotate(180deg); }
+
+/* Раскрывающаяся часть */
+.subject-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  border-top: 0 solid var(--border);
+}
+.subject-card.open .subject-body {
+  border-top-width: 1px;
+}
+
+.subject-dates {
+  padding: 12px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: 13px;
+}
+.date-row .date {
+  font-weight: 700;
+  color: var(--text);
+  min-width: 110px;
+}
+.date-row .time {
+  color: var(--text-muted);
+  min-width: 100px;
+  font-size: 12px;
+}
+.date-row .status {
+  margin-left: auto;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+.status.status-present {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--success);
+}
+.status.status-absent {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--danger);
+}
+.status.status-excused {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--warning);
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .att-top {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  .att-circle-wrap { width: 180px; height: 180px; }
+  .att-percent { font-size: 34px; }
+}
+@media (max-width: 640px) {
+  .page-head { flex-direction: column; align-items: stretch; }
+  .subject-bar { width: 60px; }
+  .subject-progress { gap: 6px; font-size: 12px; }
+  .date-row { flex-wrap: wrap; }
+  .date-row .date, .date-row .time { min-width: auto; }
+  .date-row .status { margin-left: 0; }
+}

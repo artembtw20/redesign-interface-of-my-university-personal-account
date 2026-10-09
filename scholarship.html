@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Повышенная стипендия — АмГУ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="scholarship.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="data.js"></script>
+<script defer src="app.js"></script>
+<script defer src="scholarship.js"></script>
+</head>
+<body data-theme="light" data-edu-type="budget">
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a href="https://amursu.ru/" class="logo-wrap" target="_blank" rel="noopener" title="Перейти на сайт АмГУ">
+      <img src="assets/logo-small.svg" alt="АмГУ" class="logo-mini-img">
+      <img src="assets/logo-big.svg" alt="Амурский государственный университет" class="logo-big-img">
+    </a>
+
+    <nav class="nav">
+      <a href="main.html" class="nav-item active"><i data-lucide="home"></i><span class="label">Главная</span></a>
+      <a href="messages.html" class="nav-item"><i data-lucide="mail"></i><span class="label">Сообщения</span></a>
+      <a href="survey.html" class="nav-item"><i data-lucide="clipboard-list"></i><span class="label">Анкетирование</span></a>
+      <a href="portfolio.html" class="nav-item"><i data-lucide="briefcase"></i><span class="label">Портфолио</span></a>
+      <a href="schedule.html" class="nav-item"><i data-lucide="calendar"></i><span class="label">Расписание</span></a>
+      <a href="deadlines.html" class="nav-item"><i data-lucide="alarm-clock"></i><span class="label">Дедлайны</span></a>
+      <a href="programs.html" class="nav-item"><i data-lucide="building-2"></i><span class="label">Образовательные программы</span></a>
+      <a href="process.html" class="nav-item"><i data-lucide="graduation-cap"></i><span class="label">Учебный процесс</span></a>
+      <a href="record-book.html" class="nav-item"><i data-lucide="book-marked"></i><span class="label">Зачётная книжка</span></a>
+      <a href="library.html" class="nav-item"><i data-lucide="library"></i><span class="label">Библиотека</span></a>
+      <a href="cybersport.html" class="nav-item"><i data-lucide="gamepad-2"></i><span class="label">Киберспорт</span></a>
+      <a href="scholarship.html" class="nav-item"><i data-lucide="award"></i><span class="label">Повышенная стипендия</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="container">
+
+      <header class="page-head">
+        <div>
+          <h1>Повышенная стипендия</h1>
+          <div class="subtitle">Конкурс на ПГАС</div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="themeToggle" title="Сменить тему">
+            <i data-lucide="sun" id="themeIcon"></i>
+          </button>
+          <div class="notif-wrap">
+            <button class="icon-btn" id="notifBtn" title="Уведомления">
+              <i data-lucide="bell"></i>
+              <span class="dot" id="notifDot" style="display: none;"></span>
+            </button>
+            <div class="notif-dropdown" id="notifDropdown">
+              <div class="notif-head">
+                <span>Уведомления</span>
+                <button class="notif-clear" id="notifClear">Очистить</button>
+              </div>
+              <div class="notif-list" id="notifList"></div>
+            </div>
+          </div>
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarBtn">А</div>
+            <div class="dropdown" id="dropdown">
+              <a href="profile.html"><i data-lucide="user"></i>Профиль</a>
+              <a href="#"><i data-lucide="settings"></i>Настройки</a>
+              <hr>
+              <a href="#" class="danger"><i data-lucide="log-out"></i>Выход</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Плашка с названием конкурса -->
+      <div class="sch-banner">
+        Конкурс студентов на повышенную государственную академическую стипендию (ПГАС)
+      </div>
+
+      <!-- Две колонки -->
+      <div class="sch-grid">
+
+        <!-- ЛЕВАЯ КОЛОНКА -->
+        <div class="sch-col-left">
+
+          <div class="sch-card">
+            <div class="sch-card-head">
+              <span>Баллы заявления для конкурса в ПГАС</span>
+              <i data-lucide="calculator"></i>
+            </div>
+
+            <div class="sch-warning">
+              <div class="sch-warning-icon">
+                <i data-lucide="alert-triangle"></i>
+              </div>
+              <div class="sch-warning-body">
+                <p>Обратите внимание, что у вас в настоящее время <b>нет заявления для участия</b> в комиссии ПГАС.</p>
+                <p>Чтобы создать заявление, перейдите, пожалуйста, в раздел "ПОРТФОЛИО" и заполните необходимую информацию во вкладке <b>"ЗАЯВЛЕНИЕ ПГАС"</b>.</p>
+                <button class="sch-btn-primary" id="btnGoPortfolio">
+                  Перейти в Портфолио
+                </button>
+              </div>
+            </div>
+
+            <div class="sch-support">
+              Если вы создали заявление и оно не отображается, свяжитесь с отделом ЦЦИТО для технической поддержки по телефону <b>234-655</b>.
+            </div>
+          </div>
+
+          <div class="sch-closed">
+            <b>Конкурс студентов на ПГАС закрыт</b>, отображается прошлый конкурс
+          </div>
+
+        </div>
+
+        <!-- ПРАВАЯ КОЛОНКА -->
+        <div class="sch-col-right">
+
+          <div class="sch-card sch-rating">
+            <div class="sch-card-head">
+              <span>Рейтинг заявлений</span>
+              <i data-lucide="trophy"></i>
+            </div>
+
+            <div class="sch-tabs">
+              <button class="sch-tab active" data-filter="all">ВСЕ</button>
+              <button class="sch-tab" data-filter="confirmed">ПОДТВЕРЖДЕННЫЕ</button>
+            </div>
+
+            <div class="sch-table-wrap">
+              <table class="sch-table">
+                <thead>
+                  <tr>
+                    <th style="width: 70px;">Место</th>
+                    <th>Участник</th>
+                    <th>Тип деятельности</th>
+                    <th style="width: 130px;">Сумма по деятельности</th>
+                    <th style="width: 130px;">Общая сумма баллов</th>
+                    <th style="width: 110px;">Посмотреть</th>
+                  </tr>
+                </thead>
+                <tbody id="schTableBody">
+                  <tr>
+                    <td colspan="6" class="sch-empty">Отсутствуют заявления</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

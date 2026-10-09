@@ -1,0 +1,304 @@
+/* ============================================================
+   КАБИНЕТ ПРЕПОДАВАТЕЛЯ — стили
+   Подключается ПОСЛЕ styles.css
+   ============================================================ */
+
+/* ---------- Шапка ---------- */
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.page-head h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.page-head .subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ---------- Управление ---------- */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.control-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.control-group select {
+  padding: 9px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  min-width: 140px;
+}
+.control-group select:focus { border-color: var(--accent); }
+
+/* ---------- Табы ---------- */
+.tabs {
+  display: flex;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 4px;
+  gap: 2px;
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tab:hover { color: var(--text); }
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+}
+.tab svg { width: 16px; height: 16px; stroke: currentColor; }
+
+/* ---------- Карточка ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ---------- Кнопка ---------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled {
+  background: var(--border);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-primary svg { width: 16px; height: 16px; stroke: currentColor; }
+
+.btn-primary.saved {
+  background: var(--success);
+}
+
+/* ---------- Список студентов ---------- */
+.students-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.student-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--bg);
+  transition: background 0.15s;
+}
+.student-row:hover { background: var(--border); }
+
+.student-avatar {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.student-name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  min-width: 0;
+}
+
+.student-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.status-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.status-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.status-btn svg { width: 14px; height: 14px; stroke: currentColor; }
+
+.status-btn.active.present {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: var(--success);
+  color: var(--success);
+}
+.status-btn.active.absent {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+.status-btn.active.excused {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+/* ---------- Оценки ---------- */
+.grade-buttons {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.grade-btn {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.grade-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.grade-btn.active {
+  color: #fff;
+  border-color: transparent;
+}
+.grade-btn.active.grade-5 { background: var(--success); }
+.grade-btn.active.grade-4 { background: var(--info); }
+.grade-btn.active.grade-3 { background: var(--warning); }
+.grade-btn.active.grade-2 { background: var(--danger); }
+.grade-btn.clear {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+.grade-btn.clear.active {
+  background: var(--text-muted);
+  color: #fff;
+}
+
+/* ---------- Скрытие табов ---------- */
+.hidden { display: none !important; }
+
+/* ---------- Пустое состояние ---------- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-muted);
+}
+.empty-state svg {
+  width: 48px; height: 48px;
+  margin-bottom: 14px;
+  stroke: currentColor;
+  opacity: 0.4;
+}
+.empty-state .title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 640px) {
+  .page-head { flex-direction: column; align-items: stretch; }
+  .controls { flex-direction: column; align-items: stretch; }
+  .tabs { width: 100%; }
+  .tab { flex: 1; justify-content: center; }
+  .student-row { flex-wrap: wrap; gap: 10px; }
+  .student-actions { width: 100%; justify-content: flex-start; }
+  .grade-buttons { flex-wrap: wrap; }
+  .card { padding: 16px; }
+}
